@@ -127,3 +127,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+notebooks/datas/maps/carte_all_markers.html
+notebooks/datas/maps/carte_all_markers.min.html
+notebooks/datas/maps/carte_bornes_rechargement.html
+notebooks/datas/maps/carte_bornes_rechargement.min.html
+notebooks/datas/maps/carte_traffic_journalier.html
+notebooks/datas/maps/carte_traffic_journalier.min.html
+notebooks/datas/maps/carte_vehicules.html
+notebooks/datas/maps/carte_vehicules.min.html
