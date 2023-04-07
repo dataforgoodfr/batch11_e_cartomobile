@@ -127,3 +127,30 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+notebooks/datas/maps/carte_all_markers.html
+notebooks/datas/maps/carte_all_markers.min.html
+notebooks/datas/maps/carte_bornes_rechargement.html
+notebooks/datas/maps/carte_bornes_rechargement.min.html
+notebooks/datas/maps/carte_traffic_journalier.html
+notebooks/datas/maps/carte_traffic_journalier.min.html
+notebooks/datas/maps/carte_vehicules.html
+notebooks/datas/maps/carte_vehicules.min.html
+notebooks/tabular_datas.ipynb
+notebooks/dictionnaire.pkl
+notebooks/all_tabular_datas.ipynb
+notebooks/CAR_viz.ipynb
+notebooks/CAR_viz.ipynb
+notebooks/CAR_viz.ipynb
+notebooks/datas/communes-20220101.feather
+notebooks/datas/Communes.feather
+notebooks/datas/dataset_charge_points.feather
+notebooks/datas/dataset_communes.feather
+notebooks/datas/decoupage_administratif.feather
+notebooks/datas/depatements-regions.feather
+notebooks/datas/tabular_datas_agregated.pkl
+notebooks/map.html
+notebooks/tabular_datas_clustering_v1.ipynb
+notebooks/tabular_datas_map_v2.ipynb
+notebooks/CAR_viz.ipynb
+notebooks/datas/maps/Carte region Grand Est.html
+notebooks/datas/maps/Carte region Normandie.html
