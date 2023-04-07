@@ -26,8 +26,9 @@ jupyter notebook
 Ensuite, sélectionnez le kernel créé dans l'interface web.
 
 
-# TODO
+# TODO in next weeks
 
+- Sync with other teams who worked on the same datasets
 - Check pourquoi certaines communes sont manquantes dans le join communes - immatriculations dans le notebook ```enrichissement_dataset_voitures_par_commune_et_type_de_charge.ipynb```. Comparer les données communes obtenues sur "https://geo.api.gouv.fr/communes/<code>" avec le csv ```raw_data/communes-departement-region.csv```. Il faut s'assurer qu'il n'y a pas trop de valeurs manquantes pour avoir des vizs fiables.
 - Continuer les vizs folium, intégrer les plus intéressantes dans une application streamlit.
 - Bien valider la qualité des données consolidées IRVE + continuer le nettoyage du notebook, certaines méthodes d'imputation sont moches.
