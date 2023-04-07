@@ -29,9 +29,9 @@ Ensuite, sélectionnez le kernel créé dans l'interface web.
 # TODO in next weeks
 
 - Sync avec les autres équipes qui utilisent les mêmes données
-- Check pourquoi certaines communes sont manquantes dans le join communes - immatriculations dans le notebook ```enrichissement_dataset_voitures_par_commune_et_type_de_charge.ipynb```. Comparer les données communes obtenues sur "https://geo.api.gouv.fr/communes/<code>" avec le csv ```raw_data/communes-departement-region.csv```. Il faut s'assurer qu'il n'y a pas trop de valeurs manquantes pour avoir des vizs fiables.
-- Continuer les vizs folium, intégrer les plus intéressantes dans une application streamlit.
-- Bien valider la qualité des données consolidées IRVE + continuer le nettoyage du notebook, certaines méthodes d'imputation sont moches.
+- Check pourquoi certaines communes sont manquantes dans le join communes - immatriculations dans le notebook ```enrichissement_dataset_voitures_par_commune_et_type_de_charge.ipynb```. Comparer les données communes obtenues sur "https://geo.api.gouv.fr/communes/<code>" avec le csv ```raw_data/communes-departement-region.csv```. Il faut s'assurer qu'il n'y a pas trop de valeurs manquantes pour avoir des vizs fiables -> Cela semble avoir été fait par Michaël Leroy.
+- Continuer les vizs folium, intégrer les plus intéressantes dans une application streamlit. Reproduire les vizs du Tableau public de Nalron à partir de nos premiers notebooks -> Pareil, voir comment les autres équipes ont fixé leurs données et valider la méthodo.
+- Bien valider la qualité des données consolidées IRVE + continuer le nettoyage du notebook, certaines méthodes d'imputation sont moches -> contact avec Michaël Leroy, Hugo et Esther qui ont aussi travaillé dessus.
 - Problème de join avec les communes à fixer
 - Visualiser la concentration des IRVE en France via des heatmaps, ou par département / commune en utilisant folium.
 - Croiser ces vizs avec les données de population et de trafic routier.
