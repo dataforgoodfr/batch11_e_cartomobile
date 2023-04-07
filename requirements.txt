@@ -1,0 +1,9 @@
+pandas==1.5.3
+streamlit==1.20.0
+folium==0.14.0
+jupyter==1.0.0
+geopandas==0.12.2
+black
+isort
+nbqa
+matplotlib==3.7.1
