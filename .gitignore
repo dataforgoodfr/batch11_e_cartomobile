@@ -127,6 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Unique Objects
+*:Zone.Identifier
+
 notebooks/datas/maps/carte_all_markers.html
 notebooks/datas/maps/carte_all_markers.min.html
 notebooks/datas/maps/carte_bornes_rechargement.html
