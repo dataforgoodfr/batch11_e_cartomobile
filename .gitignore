@@ -158,3 +158,113 @@ notebooks/tabular_datas_map_v2.ipynb
 notebooks/CAR_viz.ipynb
 notebooks/datas/maps/Carte region Grand Est.html
 notebooks/datas/maps/Carte region Normandie.html
+notebooks/streamlit/datas/dataset_communes_Auver_2020-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Auver_2021-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Auver_2021-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Auver_2021-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Auver_2021-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Auver_2022-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Auver_2022-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Auver_2022-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Bourg_2020-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Bourg_2021-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Bourg_2021-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Bourg_2021-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Bourg_2021-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Bourg_2022-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Bourg_2022-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Bourg_2022-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Breta_2020-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Breta_2021-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Breta_2021-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Breta_2021-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Breta_2021-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Breta_2022-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Breta_2022-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Breta_2022-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Centr_2020-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Centr_2021-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Centr_2021-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Centr_2021-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Centr_2021-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Centr_2022-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Centr_2022-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Centr_2022-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Corse_2020-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Corse_2021-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Corse_2021-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Corse_2021-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Corse_2021-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Corse_2022-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Corse_2022-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Corse_2022-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Grand_2020-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Grand_2021-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Grand_2021-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Grand_2021-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Grand_2021-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Grand_2022-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Grand_2022-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Grand_2022-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Hauts_2020-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Hauts_2021-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Hauts_2021-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Hauts_2021-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Hauts_2021-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Hauts_2022-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Hauts_2022-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Hauts_2022-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Île-d_2020-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Île-d_2021-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Île-d_2021-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Île-d_2021-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Île-d_2021-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Île-d_2022-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Île-d_2022-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Île-d_2022-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Norma_2020-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Norma_2021-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Norma_2021-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Norma_2021-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Norma_2021-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Norma_2022-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Norma_2022-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Norma_2022-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Nouve_2020-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Nouve_2021-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Nouve_2021-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Nouve_2021-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Nouve_2021-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Nouve_2022-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Nouve_2022-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Nouve_2022-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Occit_2020-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Occit_2021-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Occit_2021-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Occit_2021-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Occit_2021-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Occit_2022-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Occit_2022-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Occit_2022-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Pays _2020-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Pays _2021-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Pays _2021-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Pays _2021-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Pays _2021-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Pays _2022-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Pays _2022-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Pays _2022-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Prove_2020-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Prove_2021-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Prove_2021-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Prove_2021-09-30.feather
+notebooks/streamlit/datas/dataset_communes_Prove_2021-12-31.feather
+notebooks/streamlit/datas/dataset_communes_Prove_2022-03-31.feather
+notebooks/streamlit/datas/dataset_communes_Prove_2022-06-30.feather
+notebooks/streamlit/datas/dataset_communes_Prove_2022-09-30.feather
+notebooks/streamlit/datas/consolidation-etalab-schema-irve-statique-v-2.2.0-20230327.feather
+notebooks/streamlit/datas/decoupage_administratif.feather
+notebooks/streamlit/datas/depatements-regions.feather
+notebooks/streamlit/datas/voitures-par-commune-par-energie.feather
+notebooks/streamlit/datas/communes-20220101.feather
+notebooks/streamlit/datas/Communes.feather
