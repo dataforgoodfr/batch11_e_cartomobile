@@ -166,6 +166,8 @@ When you need to install a new dependency that is not in the pyproject.toml (use
 poetry add ntlk
 ```
 
+**Disclaimer: The virtual environment and CI is not perfect and needs collaboration to be stable.** It will be improved iteratively. Please comment any surprising thing you see.
+
 After commiting to the repo, other team members will be able to use the exact same environment you are using. Please be sure that you do not break the CI or other important code when merging your PR to the main branch.
 
 **All Pull requests should be validated by 1 member before being merged.** See below for more details on pull requests review.
