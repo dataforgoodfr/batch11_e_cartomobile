@@ -41,13 +41,12 @@ jobs:
       if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
       run: poetry install --no-interaction
 
-  lint:
     - name: Lint
       run: |
         poetry run black src --check
         poetry run flake8 src
         poetry run isort src
-  test:        
+    
     - name: Run tests
       run: |
         poetry run pytest tests
