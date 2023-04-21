@@ -6,7 +6,7 @@ Encourager et planifier la mobilité électrique dans les territoires avec l’O
 
 Versions Python supportées : ">=3.8.1,<3.9.7 || >3.9.7,<3.10"
 
-Si votre version ne respecte pas ces critères, référez vous à la partie [Comment changer ma version Python locale](#changer-ma-version-python-locale).
+Si votre version ne respecte pas ces critères, référez vous à la partie [Changer ma version Python locale](#changer-ma-version-python-locale).
 
 Pour installer l'environnement virtuel avec toutes les dépendences du projet:
 ```
