@@ -5,7 +5,6 @@ description = "Encourager et planifier la mobilité électrique dans les territo
 authors = ["mromagne <michael.romagne@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "batch11_e_cartomobile"}]
 
 # Huge mess for now, will clean when project converges
 [tool.poetry.dependencies]
