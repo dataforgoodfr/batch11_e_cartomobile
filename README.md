@@ -166,7 +166,7 @@ When you need to install a new dependency that is not in the pyproject.toml (use
 poetry add ntlk
 ```
 
-**Disclaimer: The virtual environment and CI is not perfect and needs collaboration to be stable.** It will be improved iteratively. Please comment any surprising thing you see.
+**Disclaimer: The virtual environment and CI is not perfect and needs collaboration to be stable.** It will be improved iteratively. Please comment any surprising thing you see. Also, your PR may be bloked due to Black, Flake8 or isort. Please take time to analyze errors and try to fix them. Pre-commit hooks are here to help but you may have other surprises. We will tweak flake8 and other libs parameters iteratively also. Try not to ignore too many errors.
 
 After commiting to the repo, other team members will be able to use the exact same environment you are using. Please be sure that you do not break the CI or other important code when merging your PR to the main branch.
 
