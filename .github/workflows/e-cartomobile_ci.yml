@@ -43,9 +43,9 @@ jobs:
 
     - name: Lint
       run: |
-        poetry run black src --check
-        poetry run flake8 src
-        poetry run isort src
+        poetry run black e_cartomobile --check
+        poetry run flake8 e_cartomobile
+        poetry run isort e_cartomobile
     
     - name: Run tests
       run: |
