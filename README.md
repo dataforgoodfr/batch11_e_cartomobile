@@ -204,14 +204,13 @@ Please try to develop unit tests for your code. See [this tuto](https://realpyth
 
 ### Use the virtual environment in VS Code notebooks or Jupyter notebooks
 
-**TO BE TESTED, like other things**
+**TO BE VALIDATED, like all README.** Please edit/comment if anything is wrong.
 
-You can select the virtual environment created in VSCode to run the notebooks. If you prefer to run your notebooks with Jupyter in the browser:
+You can select the virtual environment created in VSCode to run the notebooks (in python evironments, .venv should be available). If you prefer to run your notebooks with Jupyter in the browser:
 ```
-poetry run ipython kernel install --user --name=<YOUR_KERNEL_NAME>
-jupyter notebook
+poetry run jupyter notebook
 ```
-Then, select the kernel created in the Jupyter web interface.
+Then, open your notebook, you should be inside your virtual environment. If something is weird, trop running ```poetry install``` and relaunch ```poetry run jupyter notebook```.
 
 
 ### Code Review Guidelines
