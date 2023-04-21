@@ -166,11 +166,22 @@ When you need to install a new dependency that is not in the pyproject.toml (use
 poetry add ntlk
 ```
 
-**Disclaimer: The virtual environment and CI is not perfect and needs collaboration to be stable.** It will be improved iteratively. Please comment any surprising thing you see. Also, your PR may be bloked due to Black, Flake8 or isort. Please take time to analyze errors and try to fix them. Pre-commit hooks are here to help but you may have other surprises. We will tweak flake8 and other libs parameters iteratively also. Try not to ignore too many errors.
-
-After commiting to the repo, other team members will be able to use the exact same environment you are using. Please be sure that you do not break the CI or other important code when merging your PR to the main branch.
+After commiting to the repo, other team members will be able to use the exact same environment you are using. Please be sure that you do not break the CI or other important stuff when merging your PR to the main branch.
 
 **All Pull requests should be validated by 1 member before being merged.** See below for more details on pull requests review.
+
+**Disclaimer: The virtual environment and CI are not perfect and need collaboration to be stable.** Please comment any surprising things you see. Also, your PR may be bloked due to Black, Flake8 or isort. Pre-commit hooks are here to help and apply some fixes to your code when you commit stuff to follow PEP8 standards. But you may have other surprises with a CI failing. Please take the time to analyze errors in "Actions" on Github and try to fix them. Try not to ignore too many errors. We will tweak flake8 and other libs parameters iteratively to have the best experience.
+
+### A few details about pre-commit
+
+The pre-commit library is installed in the virtual environment. It runs isort on your files (check if your imports are well sorted), then black (formatter following PEP8 standards) and eventually runs flake8 to check if everything is good. This suite runs automatically when you do a git commit. You can also run this pipeline with the following command:
+
+```
+pre-commit run --all-files
+```
+
+If you want more details, here is a small tutorial on pre-commit : [tuto](https://rohitgupta.xyz/blog/keeping-python-code-clean-with-pre-commit-hooks-black-flake8-and-isort/)
+
 ### Run the dashboard
 
 Run:
