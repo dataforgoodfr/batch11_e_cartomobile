@@ -2,4 +2,4 @@
 
 
 def test_placeholder():
-    pass
+    assert 1==1
