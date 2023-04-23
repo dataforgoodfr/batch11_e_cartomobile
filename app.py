@@ -1,5 +1,6 @@
-import streamlit as st
 from pathlib import Path
+
+import streamlit as st
 
 st.set_page_config(
     page_title="E-CartoMobile",
@@ -8,9 +9,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-MD_METHODO = (
-    "e_cartomobile/content/methodologie.md"
-)
+MD_METHODO = "e_cartomobile/content/methodologie.md"
 
 st.write("## Vision du projet")
 
@@ -29,14 +28,15 @@ tab1, tab2, tab3 = st.tabs(
 )
 
 with tab1:
-    st.write("### En chantier") # TODO : evolution temporelle du parc - cf immatriculations
+    st.write(
+        "### En chantier"
+    )  # TODO : evolution temporelle du parc - cf immatriculations
 
 with tab2:
     with st.expander("Répartion des puissances", expanded=False):
         st.write("### En chantier")
-        
-    with st.expander("Evolution des points de recharge", expanded=False):
 
+    with st.expander("Evolution des points de recharge", expanded=False):
         st.write("### En chantier")
 
 with tab3:

@@ -1,7 +1,8 @@
 import folium
-from folium import plugins 
+from folium import plugins
 
-def plot_basemap_folium_france():   
+
+def plot_basemap_folium_france():
     """
     Fonction basique, simplement pour exemple
     """
