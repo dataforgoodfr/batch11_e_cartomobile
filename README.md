@@ -18,9 +18,9 @@ This project aims at encouraging and planning electric mobility in French territ
 - e_cartomobile ------------------------ all methods needed to serve the dashboard
         content ------------------------ documentation
         data_analytics ----------------- methods and figures for final dashboard
-        data_extracts ------------------ raw data extracts
+        data_extracts ------------------ methods to extract raw data & some actual extracts
         data_transform ----------------- methods related to process raw and aggregated data
-        utils --------------------------
+        utils -------------------------- common in-memory data (Constants, colors, ...)
         tests -------------------------- unit tests
 - notebooks ---------------------------- R&D notebooks
 - pages -------------------------------- the different pages making the dashboard
