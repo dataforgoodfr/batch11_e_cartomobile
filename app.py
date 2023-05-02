@@ -2,6 +2,12 @@ from pathlib import Path
 
 import streamlit as st
 
+from e_cartomobile.data_analytics.vizualisation_plotly import (
+    graph_connector_types,
+    graph_station_types,
+    graph_stations_evolution,
+)
+
 st.set_page_config(
     page_title="E-CartoMobile",
     page_icon="🚗",
@@ -37,7 +43,15 @@ with tab2:
         st.write("### En chantier")
 
     with st.expander("Evolution des points de recharge", expanded=False):
-        st.write("### En chantier")
+        fig1, fig2 = graph_stations_evolution()
+        st.plotly_chart(fig1)
+        st.plotly_chart(fig2)
+
+    with st.expander("Type d'implantation des points de recharge", expanded=False):
+        st.plotly_chart(graph_station_types())
+
+    with st.expander("Types de connecteurs", expanded=False):
+        st.plotly_chart(graph_connector_types())
 
 with tab3:
     with st.expander("Europe", expanded=False):
