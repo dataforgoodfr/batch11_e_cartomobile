@@ -3,7 +3,6 @@
 # from tqdm import tqdm
 
 import os
-os.environ['USE_PYGEOS'] = '0'
 
 # Data management
 import pandas as pd
@@ -12,27 +11,17 @@ import numpy as np
 
 
 # Visualisation
-import matplotlib.pyplot as plt
-import seaborn as sns
 import folium
-from folium.features import Choropleth
 from folium.plugins import MarkerCluster
-
-# Preprocessing
-from sklearn.preprocessing import StandardScaler
-import umap
-
+from shapely.geometry import Polygon, Point
 
 # I/O
-import gc
-import io, requests
-import zipfile, shutil
+import requests
 import joblib
-
-import streamlit as st
 
 # tqdm().pandas()
 
+os.environ['USE_PYGEOS'] = '0'
 # data_path = 'C:/Users/demo/Desktop/Lattitude/datas/'
 data_path = 'datas'
 # os.makedirs(data_path, exist_ok=True)
@@ -92,12 +81,6 @@ def make_color(df, col='VE_per_inhab', color_type=None):
 icons from https://fontawesome.com/v4/icons/
 
 '''
-from folium.plugins import MarkerCluster
-from folium import FeatureGroup
-import math
-
-
-
 
 def make_map(df,com_df, pdc_df, color_col='VE_per_inhab'):
     # Get center
@@ -209,7 +192,6 @@ def make_map(df,com_df, pdc_df, color_col='VE_per_inhab'):
     return m
 
 
-from shapely.geometry import Polygon, Point
 def get_isochrones(df, town, iso, token):
     if iso != [0,0,0,0]:
         origin = df.query("nom == @town").iloc[0].geometry.centroid
@@ -232,7 +214,7 @@ def get_isochrones(df, town, iso, token):
             'layer_name': ['ville' ]       
         }
 
-        denoise = 0   #for polygons, 0 for road trace
+        # denoise for polygons, denoise = 0 for road trace
 
         request = f'https://api.mapbox.com/isochrone/v1/mapbox/driving/'\
             + f'{origin.x}%2C{origin.y}?'\

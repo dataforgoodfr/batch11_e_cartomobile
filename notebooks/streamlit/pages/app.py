@@ -1,8 +1,9 @@
 
-from page1_functions import *
+from page1_functions import get_datas, get_isochrones, make_map
 import streamlit as st
-from streamlit_folium import st_folium, folium_static
+from streamlit_folium import folium_static
 
+DATA_PATH = 'datas'
 
 def choose_town(df):
     col1, col2, col3 = st.columns(3)
@@ -56,7 +57,7 @@ def choose_isos():
 def main():
     st.title('E-motion')
 
-    bornes, communes = get_datas(data_path,
+    bornes, communes = get_datas(DATA_PATH,
                                 'dataset_charge_points.feather',
                                 '2022-12-31')
 
