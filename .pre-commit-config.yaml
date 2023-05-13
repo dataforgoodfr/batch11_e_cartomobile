@@ -16,3 +16,4 @@ repos:
     rev: v2.3.0
     hooks:
     - id: flake8
+      entry: flake8 e_cartomobile/
