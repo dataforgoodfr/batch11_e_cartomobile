@@ -12,4 +12,6 @@ dependencies:
 - seaborn=0.12.2
 - conda-forge::ipywidgets=8.0.4
 - conda-forge::dask-geopandas=0.3.0
+- anaconda::ipython_genutils=0.2.0
 - conda-forge::css-html-js-minify
+- conda-forge::mapbox=0.18.1
