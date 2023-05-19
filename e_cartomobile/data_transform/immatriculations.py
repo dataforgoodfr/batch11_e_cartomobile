@@ -61,7 +61,7 @@ def clean_immatriculations_data():
     immatriculations = immatriculations.merge(
         communes, left_on="codgeo", right_on="insee", how="left"
     ).drop(["geometry"], axis=1)
-    # Correct the format to cover EPCI ZZZZZZZZZ case (commune without EPCI) 
-    immatriculations['epci'] = immatriculations['epci'].astype('str') 
+    # Correct the format to cover EPCI ZZZZZZZZZ case (commune without EPCI)
+    immatriculations["epci"] = immatriculations["epci"].astype("str")
     # Save
     immatriculations.to_feather(CLEAN_IMMATRICULATIONS_FILENAME)
