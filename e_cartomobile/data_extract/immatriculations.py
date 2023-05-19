@@ -27,5 +27,6 @@ def get_immatriculations_data() -> pd.DataFrame:
         IMMATRICULATIONS_FILENAME,
         sep=";",
         dtype={"codgeo": "str"},
+        encoding = 'iso-8859-1',
     )
     return immatriculations

@@ -131,6 +131,11 @@ dmypy.json
 # Unique Objects
 *:Zone.Identifier
 
+## Application data to download locally
+e_cartomobile/data_extract/data/communes-20220101.feather
+e_cartomobile/data_extract/data/immatriculations_clean.feather
+e_cartomobile/data_extract/data/voitures-rechargeables-par-commune.csv
+
 ## maps
 notebooks/datas/maps/carte_all_markers.html
 notebooks/datas/maps/carte_all_markers.min.html
