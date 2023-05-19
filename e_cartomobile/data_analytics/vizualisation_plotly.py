@@ -16,8 +16,8 @@ def graph_station_types(
         irve["implantation_station"].value_counts().reset_index(),
         values="implantation_station",
         names="index",
-        title="Répartition des types d'implantations des points de recharge",
-        labels={"implantation_station": "Nombre de points de recharge"},
+        title="Répartition des types d'implantations des bornes de recharge",
+        labels={"implantation_station": "Nombre de bornes"},
     )
     return fig
 
@@ -61,7 +61,7 @@ def graph_stations_evolution(
     """
     2 graphiques plotly:
       - Evolution du nombre de stations (à partir de 2015)
-      - Evolution du nombre de points de charge (à partir de 2015)
+      - Evolution du nombre de bornes de recharge (à partir de 2015)
     """
     # Read the file
     irve_ts = pd.read_csv(irve_ts_file_path, index_col=0).set_index(
@@ -84,8 +84,8 @@ def graph_stations_evolution(
         markers=True,
         x="date_mise_en_service",
         y="nb_pdc",
-        title="Evolution du nombre de points de charge",
-        labels={"date_mise_en_service": "Date", "nb_pdc": "Nombre de points de charge"},
+        title="Evolution du nombre de bornes de recharge",
+        labels={"date_mise_en_service": "Date", "nb_pdc": "Nombre de bornes"},
     )
     fig2.update_traces(line_color="crimson")
     return fig1, fig2
@@ -96,7 +96,7 @@ def graph_pdc_par_ve(
     pdc_immat_file_path="e_cartomobile/data_extract/data_for_viz/pdc_immat_par_dep.csv",
 ):
     """
-    Graphique plotly représentant le nombre de points de charge par vehicule électrique
+    Graphique plotly représentant le nombre de bornes de recharge par vehicule électrique
     et par département
     """
     # Read the file
@@ -109,10 +109,10 @@ def graph_pdc_par_ve(
         orientation="h",
         text_auto=".2",
         height=2000,
-        title="Points de charge par voiture à recharge électrique",
+        title="Bornes par voiture à recharge électrique",
         labels={
             "nom_departement": "Département",
-            "pdc_par_vp_el": "Points de charge par voiture électrique",
+            "pdc_par_vp_el": "Bornes par voiture électrique",
             "nb_vp_rechargeables_el": "Voitures électriques",
             "nb_vp": "Toutes les voitures",
         },
