@@ -64,7 +64,7 @@ def map_irve_ve_par_dep(
             fill_color="crimson",
             line_opacity=0.5,
         ).add_to(marker_cluster)
-    
+
     return m
 
 
