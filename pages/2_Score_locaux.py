@@ -19,9 +19,12 @@ def cached_get_score_4(gamma, dist_max_km):
 
 st.write("# Données par communes")
 
-gdf_communes = cached_get_communes_metropole_geo()
-score_to_map = cached_get_score_4(gamma=5, dist_max_km=20)
+if False:
+    gdf_communes = cached_get_communes_metropole_geo()
+    score_to_map = cached_get_score_4(gamma=5, dist_max_km=20)
 
-m = get_commune_map(gdf_communes, score_to_map)
+    m = get_commune_map(gdf_communes, score_to_map)
 
-st_data = folium_static(m)
+    st_data = folium_static(m)
+else:
+    st.warning("La carte des scores revient bientôt !")
