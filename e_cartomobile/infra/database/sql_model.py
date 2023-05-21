@@ -12,10 +12,12 @@ class Communes(Base):
     nom_commune = Column(String)
     surf_ha = Column(Float)
     geometry = Geometry("GEOMETRY")
-    
+    x = Column(Float)
+    y = Column(Float)
+
 
 class Score4(Base):
-    __tablename__ = "score4"
+    __tablename__ = "score_4"
     id = Column(
         "id",
         UUID(as_uuid=True),
@@ -28,4 +30,3 @@ class Score4(Base):
     max_distance_km = Column("max_distance_km", Float)
     insee = Column("insee", String, index=True)
     score_4 = Column("score_4", Float)
- 

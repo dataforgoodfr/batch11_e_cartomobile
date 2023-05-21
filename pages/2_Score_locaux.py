@@ -4,7 +4,7 @@ from streamlit_folium import folium_static  # st_folium regénère la map en con
 
 from e_cartomobile.data_analytics.vizualisation_folium import get_commune_map
 from e_cartomobile.data_extract.communes import get_communes_data
-from e_cartomobile.data_transform.compute_score_4 import get_score_4
+from e_cartomobile.data_extract.read_scores import get_score_4
 
 
 @st.cache_data(ttl=3600)

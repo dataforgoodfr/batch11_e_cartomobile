@@ -6,7 +6,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import Session
 
 from e_cartomobile.infra.database.errors import DBError, DBErrorEnum, DBException
-#from e_cartomobile.logger import logger
+
+# from e_cartomobile.logger import logger
 
 Base = declarative_base()
 
@@ -33,7 +34,7 @@ class Database:
 
         except exc.IntegrityError as e:
             session.rollback()
-            #logger.exception(e.orig.args[0], exc_info=True)
+            # logger.exception(e.orig.args[0], exc_info=True)
             raise DBException(
                 error=DBError(
                     code=DBErrorEnum.INTEGRITY_ERROR,
@@ -42,13 +43,13 @@ class Database:
             ) from e
         except exc.DataError as e:
             session.rollback()
-            #logger.exception(e.orig.args[0], exc_info=True)
+            # logger.exception(e.orig.args[0], exc_info=True)
             raise DBException(
                 error=DBError(code=DBErrorEnum.DATA_ERROR, message="Invalid data"),
             ) from e
         except exc.ProgrammingError as e:
             session.rollback()
-            #logger.exception(e.orig.args[0], exc_info=True)
+            # logger.exception(e.orig.args[0], exc_info=True)
             raise DBException(
                 error=DBError(
                     code=DBErrorEnum.PROGRAMMING_ERROR,
@@ -56,7 +57,7 @@ class Database:
                 ),
             ) from e
         except Exception:
-            #logger.exception("Session rollback because of exception", exc_info=True)
+            # logger.exception("Session rollback because of exception", exc_info=True)
             session.rollback()
             raise
         finally:

@@ -10,6 +10,7 @@ import geopandas as gpd
 import requests
 
 from e_cartomobile.constants import DATA_PATH
+from e_cartomobile.infra.database.sql_connection import get_db_connector
 
 FILENAME = "communes-20220101"
 TEMP_EXT = ".shp"
@@ -17,7 +18,7 @@ URL = "https://www.data.gouv.fr/fr/datasets/r/0e117c06-248f-45e5-8945-0e79d91361
 TEMP_PATH = "temp_unzip"
 
 
-def get_communes_data() -> gpd.GeoDataFrame:
+def get_communes_data_local() -> gpd.GeoDataFrame:
     "Saves communes file in DATA_PATH and returns the GeoDataFrame."
     if not Path(os.path.join(DATA_PATH, FILENAME + ".feather")).is_file():
         zip_file = requests.get(URL).content
@@ -41,3 +42,13 @@ def get_communes_data() -> gpd.GeoDataFrame:
     communes["y"] = communes["geometry_xy"].apply(lambda x: x.centroid.y)
     communes.drop(["geometry_xy"], axis=1, inplace=True)
     return communes
+
+
+def get_communes_data() -> gpd.GeoDataFrame:
+    conn = get_db_connector()
+
+    req_communes = "SELECT insee, nom_commune, surf_ha, geometry, x, y FROM communes"
+
+    communes = gpd.read_postgis(req_communes, conn, geom_col="geometry")
+
+    return communes.rename(columns={"nom_commune": "nom"})
