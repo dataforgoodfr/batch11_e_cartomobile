@@ -288,5 +288,7 @@ notebooks/streamlit/datas/communes-20220101.feather
 notebooks/streamlit/datas/Communes.feather
 notebooks/streamlit/datas/dataset_communes_Auver_2022-09-30.feather
 
+notebooks/cache
+
 notebooks/durations.pkl
 notebooks/distances.pkl
