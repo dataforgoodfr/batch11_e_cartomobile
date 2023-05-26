@@ -6,10 +6,7 @@ import pandas as pd
 
 from e_cartomobile.constants import DATA_PATH
 from e_cartomobile.data_extract.communes import get_communes_data
-from e_cartomobile.data_extract.immatriculations import (
-    IMMATRICULATIONS_FILENAME,
-    get_immatriculations_data,
-)
+from e_cartomobile.data_extract.immatriculations import get_immatriculations_data
 
 DATE_ARRETE = "2023-03-31"
 CITIES_WITH_ARRONDISSEMENTS = ["PARIS", "MARSEILLE", "LYON"]
@@ -26,9 +23,7 @@ def clean_immatriculations_data():
     immatriculations = immatriculations[
         immatriculations["date_arrete"] == DATE_ARRETE
     ].copy()
-    # Drop NaN columns (forains, unidentified or very small communes, maybe parts of bigger ones before)
-    immatriculations = immatriculations[~immatriculations["epci"].isna()]
-    immatriculations.codgeo = immatriculations.codgeo.astype(str)
+
     # Process short codgeo
     immatriculations["codgeo"] = immatriculations["codgeo"].apply(
         lambda x: "0" + x if len(x) == 4 else x
@@ -56,6 +51,9 @@ def clean_immatriculations_data():
         ].index,
         inplace=True,
     )
+    # Drop NaN columns (forains, unidentified or very small communes, maybe parts of bigger ones before)
+    immatriculations = immatriculations[~immatriculations["epci"].isna()]
+    immatriculations.codgeo = immatriculations.codgeo.astype(str)
     # Join communes data, drop geometry (heavy column)
     communes = get_communes_data()
     immatriculations = immatriculations.merge(
