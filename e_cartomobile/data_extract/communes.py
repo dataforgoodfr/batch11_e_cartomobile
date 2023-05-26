@@ -34,7 +34,7 @@ def get_communes_data_local() -> gpd.GeoDataFrame:
     communes_xy = (
         communes.copy()
         .to_crs(2154)
-        .drop(["nom", "wikipedia", "surf_ha"], axis=1)
+        .drop(["nom", "surf_ha"], axis=1)
         .rename(columns={"geometry": "geometry_xy"})
     )
     communes = communes.merge(communes_xy, on="insee", how="left")
@@ -50,5 +50,5 @@ def get_communes_data() -> gpd.GeoDataFrame:
     req_communes = "SELECT insee, nom_commune, surf_ha, geometry, x, y FROM communes"
 
     communes = gpd.read_postgis(req_communes, conn, geom_col="geometry")
-
+    communes.crs = "epsg:4326"
     return communes.rename(columns={"nom_commune": "nom"})

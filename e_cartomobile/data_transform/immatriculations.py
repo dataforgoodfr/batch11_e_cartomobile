@@ -2,8 +2,6 @@
 
 import os
 
-import pandas as pd
-
 from e_cartomobile.constants import DATA_PATH
 from e_cartomobile.data_extract.communes import get_communes_data
 from e_cartomobile.data_extract.immatriculations import get_immatriculations_data
@@ -54,8 +52,18 @@ def clean_immatriculations_data():
     # Drop NaN columns (forains, unidentified or very small communes, maybe parts of bigger ones before)
     immatriculations = immatriculations[~immatriculations["epci"].isna()]
     immatriculations.codgeo = immatriculations.codgeo.astype(str)
-    # Join communes data, drop geometry (heavy column)
+    # Join communes data, get x,y coordinates and drop geometry (heavy column)
     communes = get_communes_data()
+    communes_xy = (
+        communes.copy()
+        .to_crs({"init": "epsg:2154"})
+        .drop(["nom", "surf_ha", "x", "y"], axis=1)
+        .rename(columns={"geometry": "geometry_xy"})
+    )
+    communes = communes.merge(communes_xy, on="insee", how="left")
+    communes["x_crs_2154"] = communes["geometry_xy"].apply(lambda x: x.centroid.x)
+    communes["y_crs_2154"] = communes["geometry_xy"].apply(lambda x: x.centroid.y)
+    communes.drop(["geometry_xy"], axis=1, inplace=True)
     immatriculations = immatriculations.merge(
         communes, left_on="codgeo", right_on="insee", how="left"
     ).drop(["geometry"], axis=1)
