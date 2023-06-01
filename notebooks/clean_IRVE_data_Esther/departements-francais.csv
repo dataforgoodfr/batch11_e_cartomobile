@@ -1,0 +1,104 @@
+NUMÉRO	NOM	REGION	CHEF LIEU	SUPERFICIE (km²)	POPULATION	DENSITE (habitants/km2)
+1	Ain	Auvergne-Rhône-Alpes	Bourg-en-Bresse	5762	631877	109.7
+2	Aisne	Hauts-de-France	Laon	7369	538659	73.1
+3	Allier	Auvergne-Rhône-Alpes	Moulins	7340	341613	46.5
+4	Alpes-de-Haute-Provence	Provence-Alpes-Côte d'Azur	Digne	6925	161799	23.4
+5	Hautes-Alpes	Provence-Alpes-Côte d'Azur	Gap	5549	140916	25.4
+6	Alpes-Maritimes	Provence-Alpes-Côte d'Azur	Nice	4299	1082440	251.8
+7	Ardèche	Auvergne-Rhône-Alpes	Privas	5529	324209	58.6
+8	Ardennes	Grand Est	Charleville-Mézières	5229	277752	53.1
+9	Ariège	Occitanie	Foix	4890	152499	31.2
+10	Aube	Grand Est	Troyes	6004	309056	51.5
+11	Aude	Occitanie	Carcassonne	6139	366957	59.8
+12	Aveyron	Occitanie	Rodez	8735	279169	32
+13	Bouches-du-Rhône	Provence-Alpes-Côte d'Azur	Marseille	5088	2016622	396.4
+14	Calvados	Normandie	Caen	5548	693579	125
+15	Cantal	Auvergne-Rhône-Alpes	Aurillac	5726	146219	25.5
+16	Charente	Nouvelle-Aquitaine	Angoulême	5956	353613	59.4
+17	Charente-Maritime	Nouvelle-Aquitaine	La Rochelle	6864	639938	93.2
+18	Cher	Centre-Val de Loire	Bourges	7235	308992	42.7
+19	Corrèze	Nouvelle-Aquitaine	Tulle	5857	241871	41.3
+2A	Corse-du-Sud	Corse	Ajaccio	4014	152730	38
+2B	Haute-Corse	Corse	Bastia	4666	174553	37.4
+21	Côte-d'Or	Bourgogne-Franche-Comté	Dijon	8763	533147	60.8
+22	Côtes d'Armor	Bretagne	Saint-Brieuc	6878	598357	87
+23	Creuse	Nouvelle-Aquitaine	Guéret	5565	120365	21.6
+24	Dordogne	Nouvelle-Aquitaine	Périgueux	9060	415417	45.9
+25	Doubs	Bourgogne-Franche-Comté	Besançon	5233	536959	102.6
+26	Drôme	Auvergne-Rhône-Alpes	Valence	6530	504637	77.3
+27	Eure	Normandie	Évreux	6040	601948	99.7
+28	Eure-et-Loir	Centre-Val de Loire	Chartres	5880	434035	73.8
+29	Finistère	Bretagne	Quimper	6733	907796	134.8
+30	Gard	Occitanie	Nîmes	5853	738189	126.1
+31	Haute-Garonne	Occitanie	Toulouse	6309	1335103	211.6
+32	Gers	Occitanie	Auch	6257	190932	30.5
+33	Gironde	Nouvelle-Aquitaine	Bordeaux	9976	1548478	155.2
+34	Hérault	Occitanie	Montpellier	6101	1120190	183.6
+35	Ille-et-Vilaine	Bretagne	Rennes	6775	1042884	153.9
+36	Indre	Centre-Val de Loire	Châteauroux	6791	224200	33
+37	Indre-et-Loire	Centre-Val de Loire	Tours	6127	604966	98.7
+38	Isère	Auvergne-Rhône-Alpes	Grenoble	7432	1251060	168.3
+39	Jura	Bourgogne-Franche-Comté	Lons-le-Saunier	4999	260587	52.1
+40	Landes	Nouvelle-Aquitaine	Mont-de-Marsan	9243	403234	43.6
+41	Loir-et-Cher	Centre-Val de Loire	Blois	6343	333050	52.5
+42	Loire	Auvergne-Rhône-Alpes	Saint-Étienne	4781	759411	158.9
+43	Haute-Loire	Auvergne-Rhône-Alpes	Le Puy-en-Velay	4977	227034	45.6
+44	Loire-Atlantique	Pays de la Loire	Nantes	6809	1365227	200.5
+45	Loiret	Centre-Val de Loire	Orléans	6775	673349	99.4
+46	Lot	Occitanie	Cahors	5217	173400	33.2
+47	Lot-et-Garonne	Nouvelle-Aquitaine	Agen	5361	333417	62.2
+48	Lozère	Occitanie	Mende	5167	76309	14.8
+49	Maine-et-Loire	Pays de la Loire	Angers	7172	810186	113
+50	Manche	Normandie	Saint-Lô	5938	499287	84.1
+51	Marne	Grand Est	Châlons-en-Champagne	8162	572293	70.1
+52	Haute-Marne	Grand Est	Chaumont	6211	179154	28.8
+53	Mayenne	Pays de la Loire	Laval	5175	307940	59.5
+54	Meurthe-et-Moselle	Grand Est	Nancy	5246	734403	140
+55	Meuse	Grand Est	Bar-le-Duc	6211	190626	30.7
+56	Morbihan	Bretagne	Vannes	6823	744813	109.2
+57	Moselle	Grand Est	Metz	6216	1044486	168
+58	Nièvre	Bourgogne-Franche-Comté	Nevers	6817	211747	31.1
+59	Nord	Hauts-de-France	Lille	5743	2605238	453.7
+60	Oise	Hauts-de-France	Beauvais	5860	821552	140.2
+61	Orne	Normandie	Alençon	6103	286618	47
+62	Pas-de-Calais	Hauts-de-France	Arras	6671	1472648	220.7
+63	Puy-de-Dôme	Auvergne-Rhône-Alpes	Clermont-Ferrand	7970	647501	81.2
+64	Pyrénées-Atlantiques	Nouvelle-Aquitaine	Pau	7645	670032	87.6
+65	Hautes-Pyrénées	Occitanie	Tarbes	4464	228582	51.2
+66	Pyrénées-Orientales	Occitanie	Perpignan	4116	471038	114.4
+67	Bas-Rhin	Grand Est	Strasbourg	4755	1116658	234.8
+68	Haut-Rhin	Grand Est	Colmar	3525	762607	216.3
+69	Rhône	Auvergne-Rhône-Alpes	Lyon	3249	1821995	560.8
+70	Haute-Saône	Bourgogne-Franche-Comté	Vesoul	5360	237706	44.3
+71	Saône-et-Loire	Bourgogne-Franche-Comté	Mâcon	8575	555408	64.8
+72	Sarthe	Pays de la Loire	Le Mans	6206	568445	91.6
+73	Savoie	Auvergne-Rhône-Alpes	Chambéry	6028	428204	71
+74	Haute-Savoie	Auvergne-Rhône-Alpes	Annecy	4388	793938	180.9
+75	Paris	Ile-de-France	Paris	105	2206488	20934.4
+76	Seine-Maritime	Normandie	Rouen	6278	1257699	200.3
+77	Seine-et-Marne	Ile-de-France	Melun	5915	1390121	235
+78	Yvelines	Ile-de-France	Versailles	2284	1427291	624.8
+79	Deux-Sèvres	Nouvelle-Aquitaine	Niort	5999	374435	62.4
+80	Somme	Hauts-de-France	Amiens	6170	571879	92.7
+81	Tarn	Occitanie	Albi	5758	386543	67.1
+82	Tarn-et-Garonne	Occitanie	Montauban	3718	255274	68.7
+83	Var	Provence-Alpes-Côte d'Azur	Toulon	5973	1048652	175.6
+84	Vaucluse	Provence-Alpes-Côte d'Azur	Avignon	3567	557548	156.3
+85	Vandée	Pays de la Loire	La Roche-sur-Yon	6720	666714	99.2
+86	Vienne	Nouvelle-Aquitaine	Poitiers	6990	434887	62.2
+87	Haute-Vienne	Nouvelle-Aquitaine	Limoges	5520	375795	68.1
+88	Vosges	Grand Est	Épinal	5874	372016	63.3
+89	Yonne	Bourgogne-Franche-Comté	Auxerre	7427	340903	45.9
+90	Territoire de Belfort	Bourgogne-Franche-Comté	Belfort	609	144483	237.1
+91	Essonne	Ile-de-France	Évry	1804	1276233	707.3
+92	Hauts-de-Seine	Ile-de-France	Nanterre	176	1601569	9120.6
+93	Seine-St-Denis	Ile-de-France	Bobigny	236	1592663	6742.9
+94	Val-de-Marne	Ile-de-France	Créteil	245	1372389	5601.6
+95	Val-D'Oise	Ile-de-France	Pontoise	1246	1215390	975.5
+971	Guadeloupe	Guadeloupe	Basse-Terre	1628	397990	244.4
+972	Martinique	Martinique	Fort-de-France	1128	380877	337.7
+973	Guyane	Guyane	Cayenne	83534	259865	3.1
+974	La Réunion	La Réunion	Saint-Denis	2504	850727	339.8
+976	Mayotte	Mayotte	Dzaoudzi	376	256518	682.2
+						
+fichier téléchargé depuis le site regions-et-departements.fr						
