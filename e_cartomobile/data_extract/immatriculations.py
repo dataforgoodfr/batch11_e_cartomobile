@@ -49,8 +49,8 @@ def get_clean_immatriculations_data():
     conn = get_db_connector()
 
     req_immat = """SELECT insee, nom_commune,
-nb_vp_rechargeables_el, nb_vp_rechargeables_gaz, nb_vp, 
-x, y, x_crs_2154, y_crs_2154 
+nb_vp_rechargeables_el, nb_vp_rechargeables_gaz, nb_vp,
+x, y, x_crs_2154, y_crs_2154
 FROM immatriculations_cleaned"""
 
     immat = pd.read_sql(req_immat, conn)
