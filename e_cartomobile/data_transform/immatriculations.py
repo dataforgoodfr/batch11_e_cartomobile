@@ -4,7 +4,7 @@ import os
 
 from e_cartomobile.constants import DATA_PATH
 from e_cartomobile.data_extract.communes import get_communes_data
-from e_cartomobile.data_extract.immatriculations import get_immatriculations_data
+from e_cartomobile.data_extract.immatriculations import get_immatriculations_data_local
 
 DATE_ARRETE = "2023-03-31"
 CITIES_WITH_ARRONDISSEMENTS = ["PARIS", "MARSEILLE", "LYON"]
@@ -14,9 +14,9 @@ CLEAN_IMMATRICULATIONS_FILENAME = os.path.join(
 COMMUNES_FILENAME = os.path.join(DATA_PATH, "communes-20220101.feather")
 
 
-def clean_immatriculations_data():
+def clean_immatriculations_data_local():
     "Clean raw immatriculations dataset and add communes info"
-    immatriculations = get_immatriculations_data()
+    immatriculations = get_immatriculations_data_local()
     # Get more recent data
     immatriculations = immatriculations[
         immatriculations["date_arrete"] == DATE_ARRETE
