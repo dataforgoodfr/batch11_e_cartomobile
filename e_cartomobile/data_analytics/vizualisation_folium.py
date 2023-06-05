@@ -3,6 +3,8 @@ import geopandas as gpd
 import pandas as pd
 from folium import plugins
 
+from e_cartomobile.data_extract.communes import get_departement_data
+
 
 def plot_basemap_folium_france():
     """
@@ -20,12 +22,14 @@ def plot_basemap_folium_france():
 def map_irve_ve_par_dep(
     irve_file_path="e_cartomobile/data_extract/data_for_viz/irve_par_loc.csv",
     immat_per_dep_file_path="e_cartomobile/data_extract/data_for_viz/immatriculations_par_dep.csv",
-    geojson_dep_file_path="e_cartomobile/data_extract/data_for_viz/departements.geojson",
+    plot_markers = False
 ):
     """
     Fonction qui affiche les stations
     et colore les département en fonction de son nombre de véhicules électriques immatriculés
     """
+    # Get departement contour
+    gdf_departement = get_departement_data()
 
     # Read IRVE data
     pdc_per_loc = pd.read_csv(irve_file_path)
@@ -47,23 +51,24 @@ def map_irve_ve_par_dep(
         key_on="feature.properties.code",
         legend_name="Voitures à recharge électrique",
         line_opacity=0.2,
-        geo_data=geojson_dep_file_path,
+        geo_data=gdf_departement,
         highlight=True,
         name="Recharge électrique",
     ).add_to(m)
 
-    # Plot the charging stations (1 marker = 1 charging station)
-    marker_cluster = folium.plugins.MarkerCluster().add_to(m)
-    for index, row in pdc_per_loc.iterrows():
-        folium.CircleMarker(
-            location=[row["consolidated_latitude"], row["consolidated_longitude"]],
-            # radius=row['nbre_pdc']/10+1,
-            radius=1,
-            color="crimson",
-            fill=True,
-            fill_color="crimson",
-            line_opacity=0.5,
-        ).add_to(marker_cluster)
+    if plot_markers:
+        # Plot the charging stations (1 marker = 1 charging station)
+        marker_cluster = folium.plugins.MarkerCluster().add_to(m)
+        for index, row in pdc_per_loc.iterrows():
+            folium.CircleMarker(
+                location=[row["consolidated_latitude"], row["consolidated_longitude"]],
+                # radius=row['nbre_pdc']/10+1,
+                radius=1,
+                color="crimson",
+                fill=True,
+                fill_color="crimson",
+                line_opacity=0.5,
+            ).add_to(marker_cluster)
 
     return m
 
