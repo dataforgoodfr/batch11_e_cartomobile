@@ -121,7 +121,7 @@ def get_commune_map(gdf_commune: gpd.GeoDataFrame, score_to_map: pd.Series):
     m = folium.Map(location=[46.9, 3], zoom_start=6, prefer_canvas=True)
 
     gdf_commune_extended = gdf_commune.merge(
-        score_to_map, left_on="codgeo", right_index=True
+        score_to_map, left_on="insee", right_index=True
     )
 
     s_name = score_to_map.name
@@ -130,8 +130,8 @@ def get_commune_map(gdf_commune: gpd.GeoDataFrame, score_to_map: pd.Series):
         gdf_commune_extended,
         color_key=s_name,
         label=None,
-        index_label="codgeo",
-        tooltip=["codgeo", "libgeo", s_name],
+        index_label="insee",
+        tooltip=["insee", "nom", s_name],
     )
 
     m.add_child(color_layer)
