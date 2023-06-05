@@ -12,13 +12,14 @@ def graph_station_types(
     # read the IRVE file
     irve = pd.read_csv(irve_file_path, low_memory=False)
     # Create the graph (plotly express)
-    fig = px.pie(
+    fig = px.treemap(
         irve["implantation_station"].value_counts().reset_index(),
         values="implantation_station",
-        names="index",
+        path=["index"],
         title="Répartition des types d'implantations des bornes de recharge",
         labels={"implantation_station": "Nombre de bornes"},
     )
+    fig.update_traces(textinfo = "label+percent entry")
     return fig
 
 
