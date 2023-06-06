@@ -2,18 +2,18 @@ import pandas as pd
 import plotly.express as px
 
 
+
 # Graph of different implantation types of charging stations
 def graph_station_types(
-    irve_file_path="e_cartomobile/data_extract/data_for_viz/consolidation-etalab-irve-clean.csv",
+    gdf_irve
 ):
     """
     Graphique plotly montrant la répartition du type d'implantation des stations
     """
-    # read the IRVE file
-    irve = pd.read_csv(irve_file_path, low_memory=False)
+
     # Create the graph (plotly express)
     fig = px.treemap(
-        irve["implantation_station"].value_counts().reset_index(),
+        gdf_irve["implantation_station"].value_counts().reset_index(),
         values="implantation_station",
         path=["index"],
         title="Répartition des types d'implantations des bornes de recharge",
@@ -25,21 +25,20 @@ def graph_station_types(
 
 # Graph of the different connector types and the number of stations available
 def graph_connector_types(
-    irve_file_path="e_cartomobile/data_extract/data_for_viz/consolidation-etalab-irve-clean.csv",
+    gdf_irve
 ):
     """
     Graphique plotly représentant le nombre de connecteurs de chaque type
     """
-    # read the file
-    irve = pd.read_csv(irve_file_path, low_memory=False)
+
     # count the number of connectors of each type
     type_prise = pd.DataFrame(
         [
-            ["Autre", irve["prise_type_autre"].sum()],
-            ["Chademo", irve["prise_type_chademo"].sum()],
-            ["Combo CCS", irve["prise_type_combo_ccs"].sum()],
-            ["Type 2", irve["prise_type_2"].sum()],
-            ["EF", irve["prise_type_ef"].sum()],
+            ["Autre", gdf_irve["prise_type_autre"].sum()],
+            ["Chademo", gdf_irve["prise_type_chademo"].sum()],
+            ["Combo CCS", gdf_irve["prise_type_combo_ccs"].sum()],
+            ["Type 2", gdf_irve["prise_type_2"].sum()],
+            ["EF", gdf_irve["prise_type_ef"].sum()],
         ],
         columns=["Type", "Nombre de points de charge"],
     )
