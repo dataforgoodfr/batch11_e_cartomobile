@@ -55,10 +55,10 @@ def get_communes_data() -> gpd.GeoDataFrame:
 
 
 def get_departement_data() -> gpd.GeoDataFrame:
-
-    geojson_dep_file_path="e_cartomobile/data_extract/data_for_viz/departements.geojson"
+    geojson_dep_file_path = (
+        "e_cartomobile/data_extract/data_for_viz/departements.geojson"
+    )
 
     gdf_dep = gpd.read_file(geojson_dep_file_path)
 
     return gdf_dep
-

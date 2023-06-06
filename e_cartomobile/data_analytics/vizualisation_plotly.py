@@ -2,11 +2,8 @@ import pandas as pd
 import plotly.express as px
 
 
-
 # Graph of different implantation types of charging stations
-def graph_station_types(
-    gdf_irve
-):
+def graph_station_types(gdf_irve):
     """
     Graphique plotly montrant la répartition du type d'implantation des stations
     """
@@ -19,14 +16,12 @@ def graph_station_types(
         title="Répartition des types d'implantations des bornes de recharge",
         labels={"implantation_station": "Nombre de bornes"},
     )
-    fig.update_traces(textinfo = "label+percent entry")
+    fig.update_traces(textinfo="label+percent entry")
     return fig
 
 
 # Graph of the different connector types and the number of stations available
-def graph_connector_types(
-    gdf_irve
-):
+def graph_connector_types(gdf_irve):
     """
     Graphique plotly représentant le nombre de connecteurs de chaque type
     """

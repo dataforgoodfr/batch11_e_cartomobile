@@ -22,7 +22,7 @@ def plot_basemap_folium_france():
 def map_irve_ve_par_dep(
     irve_file_path="e_cartomobile/data_extract/data_for_viz/irve_par_loc.csv",
     immat_per_dep_file_path="e_cartomobile/data_extract/data_for_viz/immatriculations_par_dep.csv",
-    plot_markers = False
+    plot_markers=False,
 ):
     """
     Fonction qui affiche les stations
