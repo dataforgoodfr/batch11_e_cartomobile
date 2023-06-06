@@ -1,4 +1,5 @@
 import pandas as pd
+
 from e_cartomobile.infra.database.sql_connection import get_db_connector
 
 
