@@ -9,7 +9,7 @@ import pandas as pd
 from e_cartomobile.constants import DATA_PATH
 from e_cartomobile.data_transform.immatriculations import (
     CLEAN_IMMATRICULATIONS_FILENAME,
-    clean_immatriculations_data,
+    clean_immatriculations_data_local,
 )
 
 
@@ -42,7 +42,7 @@ def score_4_target_commune(
     return score
 
 
-def get_score_4(gamma: float, dist_max_km: float) -> pd.DataFrame:
+def compute_score_4(gamma: float, dist_max_km: float) -> pd.DataFrame:
     """Computes score 4 for all communes in immatriculations dataframe.
 
     Args:
@@ -55,17 +55,17 @@ def get_score_4(gamma: float, dist_max_km: float) -> pd.DataFrame:
         pd.DataFrame: DataFrame with insee code of the commune and score 4.
     """
     if not Path(CLEAN_IMMATRICULATIONS_FILENAME).is_file():
-        clean_immatriculations_data()
+        clean_immatriculations_data_local()
     immatriculations = pd.read_feather(CLEAN_IMMATRICULATIONS_FILENAME)
     immatriculations["score_4"] = immatriculations.apply(
         lambda x: score_4_target_commune(
             gamma,
             dist_max_km,
             immatriculations["nb_vp_rechargeables_el"].values,
-            immatriculations["x"].values,
-            immatriculations["y"].values,
-            x["x"],
-            x["y"],
+            immatriculations["x_crs_2154"].values,
+            immatriculations["y_crs_2154"].values,
+            x["x_crs_2154"],
+            x["y_crs_2154"],
         ),
         axis=1,
     )
