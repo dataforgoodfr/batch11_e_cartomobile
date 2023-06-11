@@ -1,6 +1,6 @@
 """Get bornes data"""
-import pandas as pd
 import geopandas as gpd
+import pandas as pd
 import streamlit as st
 
 from e_cartomobile.infra.database.sql_connection import get_db_connector
@@ -21,7 +21,7 @@ def get_bornes_data() -> gpd.GeoDataFrame:
 def get_bornes_power_data() -> pd.DataFrame:
     conn = get_db_connector()
 
-    req_bornes = """select puissance_nominale, count(id) from consolidation_etalab_irve_clean 
+    req_bornes = """select puissance_nominale, count(id) from consolidation_etalab_irve_clean
 group by puissance_nominale
 order by puissance_nominale"""
 
