@@ -3330,6 +3330,21 @@ files = [
 ]
 
 [[package]]
+name = "pytz-deprecation-shim"
+version = "0.1.0.post0"
+description = "Shims to make deprecation of pytz easier"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,>=2.7"
+files = [
+    {file = "pytz_deprecation_shim-0.1.0.post0-py2.py3-none-any.whl", hash = "sha256:8314c9692a636c8eb3bda879b9f119e350e93223ae83e70e80c31675a0fdc1a6"},
+    {file = "pytz_deprecation_shim-0.1.0.post0.tar.gz", hash = "sha256:af097bae1b616dde5c5744441e2ddc69e74dfdcb0c263129610d85b87445a59d"},
+]
+
+[package.dependencies]
+"backports.zoneinfo" = {version = "*", markers = "python_version >= \"3.6\" and python_version < \"3.9\""}
+tzdata = {version = "*", markers = "python_version >= \"3.6\""}
+
+[[package]]
 name = "pywin32"
 version = "306"
 description = "Python for Window Extensions"
@@ -3729,17 +3744,6 @@ docs = ["ipykernel", "nbconvert", "numpydoc", "pydata_sphinx_theme (==0.10.0rc2)
 stats = ["scipy (>=1.3)", "statsmodels (>=0.10)"]
 
 [[package]]
-name = "semver"
-version = "3.0.0"
-description = "Python helper for Semantic Versioning (https://semver.org)"
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "semver-3.0.0-py3-none-any.whl", hash = "sha256:ab4f69fb1d1ecfb5d81f96411403d7a611fa788c45d252cf5b408025df3ab6ce"},
-    {file = "semver-3.0.0.tar.gz", hash = "sha256:94df43924c4521ec7d307fc86da1531db6c2c33d9d5cdc3e64cca0eb68569269"},
-]
-
-[[package]]
 name = "Send2Trash"
 version = "1.8.2"
 description = "Send file to trash natively under Mac OS X, Windows and Linux"
@@ -3978,39 +3982,39 @@ tests = ["cython", "littleutils", "pygments", "pytest", "typeguard"]
 
 [[package]]
 name = "streamlit"
-version = "1.20.0"
-description = "The fastest way to build data apps in Python"
+version = "1.23.1"
+description = "A faster way to build and share data apps"
 optional = false
 python-versions = ">=3.7, !=3.9.7"
 files = [
-    {file = "streamlit-1.20.0-py2.py3-none-any.whl", hash = "sha256:41a544b8dc618ee65726da3ac76149c5b2bf3da7bde6d50625c4f7ec95e6c9e8"},
-    {file = "streamlit-1.20.0.tar.gz", hash = "sha256:f6e257e033a2532ce9b37c425717a4e885fa4d0e339fa5dcdbbda8d75ec191e9"},
+    {file = "streamlit-1.23.1-py2.py3-none-any.whl", hash = "sha256:02cd55a95acd20d73ff03866956ba6e98d71041ee4728dbfef05cf17069d1bb9"},
+    {file = "streamlit-1.23.1.tar.gz", hash = "sha256:af95a78f9d291f12f779cf66a2bdadfafd8a46fe4fcc6ed281492640ed37bf1e"},
 ]
 
 [package.dependencies]
-altair = ">=3.2.0,<5"
-blinker = ">=1.0.0"
-cachetools = ">=4.0"
-click = ">=7.0"
-gitpython = "!=3.1.19"
-importlib-metadata = ">=1.4"
-numpy = "*"
-packaging = ">=14.1"
-pandas = ">=0.25,<2"
-pillow = ">=6.2.0"
-protobuf = ">=3.12,<4"
+altair = ">=4.0,<6"
+blinker = ">=1.0.0,<2"
+cachetools = ">=4.0,<6"
+click = ">=7.0,<9"
+gitpython = ">=3,<3.1.19 || >3.1.19,<4"
+importlib-metadata = ">=1.4,<7"
+numpy = ">=1,<2"
+packaging = ">=14.1,<24"
+pandas = ">=0.25,<3"
+pillow = ">=6.2.0,<10"
+protobuf = ">=3.20,<5"
 pyarrow = ">=4.0"
-pydeck = ">=0.1.dev5"
-pympler = ">=0.9"
-python-dateutil = "*"
-requests = ">=2.4"
-rich = ">=10.11.0"
-semver = "*"
-toml = "*"
-tornado = ">=6.0.3"
-typing-extensions = ">=3.10.0.0"
-tzlocal = ">=1.1"
-validators = ">=0.2"
+pydeck = ">=0.1.dev5,<1"
+pympler = ">=0.9,<2"
+python-dateutil = ">=2,<3"
+requests = ">=2.4,<3"
+rich = ">=10.11.0,<14"
+tenacity = ">=8.0.0,<9"
+toml = "<2"
+tornado = ">=6.0.3,<7"
+typing-extensions = ">=4.0.1,<5"
+tzlocal = ">=1.1,<5"
+validators = ">=0.2,<1"
 watchdog = {version = "*", markers = "platform_system != \"Darwin\""}
 
 [package.extras]
@@ -4244,17 +4248,18 @@ files = [
 
 [[package]]
 name = "tzlocal"
-version = "5.0.1"
+version = "4.3"
 description = "tzinfo object for the local timezone"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "tzlocal-5.0.1-py3-none-any.whl", hash = "sha256:f3596e180296aaf2dbd97d124fe76ae3a0e3d32b258447de7b939b3fd4be992f"},
-    {file = "tzlocal-5.0.1.tar.gz", hash = "sha256:46eb99ad4bdb71f3f72b7d24f4267753e240944ecfc16f25d2719ba89827a803"},
+    {file = "tzlocal-4.3-py3-none-any.whl", hash = "sha256:b44c4388f3d34f25862cfbb387578a4d70fec417649da694a132f628a23367e2"},
+    {file = "tzlocal-4.3.tar.gz", hash = "sha256:3f21d09e1b2aa9f2dacca12da240ca37de3ba5237a93addfd6d593afe9073355"},
 ]
 
 [package.dependencies]
 "backports.zoneinfo" = {version = "*", markers = "python_version < \"3.9\""}
+pytz-deprecation-shim = "*"
 tzdata = {version = "*", markers = "platform_system == \"Windows\""}
 
 [package.extras]
@@ -4491,4 +4496,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<3.9.7 || >3.9.7,<3.10"
-content-hash = "aec32c943a0f11b0e6d07f67183759402773d912ef01a1faa5926407cfaac769"
+content-hash = "ba810b4d32e553032e5867aeb7f797ccd625bc2b3df828cd8fb7f76d506fb284"
