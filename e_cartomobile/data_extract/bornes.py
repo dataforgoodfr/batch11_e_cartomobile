@@ -16,9 +16,9 @@ def get_bornes_data() -> gpd.GeoDataFrame:
 
     return gdf_bornes
 
+
 @st.cache_data(ttl=3600)
 def get_bornes_power_data() -> pd.DataFrame:
-
     conn = get_db_connector()
 
     req_bornes = """select puissance_nominale, count(id) from consolidation_etalab_irve_clean 
@@ -28,8 +28,12 @@ order by puissance_nominale"""
     df_bornes_power = pd.read_sql(req_bornes, conn)
 
     # Clean power in W instead of kW (>1MW should not exist)
-    df_irve_power_clean = df_bornes_power.copy() 
-    df_irve_power_clean.puissance_nominale = df_bornes_power.puissance_nominale.apply(lambda x : x if x < 1000 else x/1000)
-    df_irve_power_clean = df_irve_power_clean.groupby('puissance_nominale').agg('sum').reset_index()
+    df_irve_power_clean = df_bornes_power.copy()
+    df_irve_power_clean.puissance_nominale = df_bornes_power.puissance_nominale.apply(
+        lambda x: x if x < 1000 else x / 1000
+    )
+    df_irve_power_clean = (
+        df_irve_power_clean.groupby("puissance_nominale").agg("sum").reset_index()
+    )
 
     return df_irve_power_clean
