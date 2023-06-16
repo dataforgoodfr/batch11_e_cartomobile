@@ -199,8 +199,11 @@ def compute_bornes_by_communes_smoothed(
         get_x_y_from_lat_lon(gdf_comm.y, gdf_comm.x)
     ).T
     df_bornes_communes_completed = df_bornes_communes.join(
-        gdf_comm[["insee", "x_crs_2154", "y_crs_2154"]].set_index("insee")
+        gdf_comm[["insee", "x_crs_2154", "y_crs_2154"]].set_index("insee"), how="outer"
     )
+    df_bornes_communes_completed = df_bornes_communes_completed.fillna(
+        0
+    )  # communes sans aucune borne
 
     # smooth
     df_bornes_communes_smooth = add_close_pdc_by_power_cluster(
@@ -230,7 +233,7 @@ def get_scenario_weight(scenario):
 
 if __name__ == "__main__":
     df_bornes_communes_smooth = compute_bornes_by_communes_smoothed()
-    df_bornes_communes_smooth.to_csv(
+    df_bornes_communes_smooth.drop(columns=["x_crs_2154", "y_crs_2154"]).to_csv(
         f"{DATA_PATH}/bornes/df_bornes_communes_smooth.csv"
     )
     df_bornes_communes_uniform = compute_bornes_by_communes_ponderated(
