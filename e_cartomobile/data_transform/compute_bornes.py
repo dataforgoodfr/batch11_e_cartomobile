@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 
+from e_cartomobile.constants import ARRONDISSEMENT_DICT, DATA_PATH
 from e_cartomobile.data_extract.bornes import get_bornes_data
 from e_cartomobile.data_extract.communes import get_communes_data
 from e_cartomobile.data_transform.compute_score_4 import (  # same distance collection
@@ -152,7 +153,7 @@ def compute_unique_bornes_ponderated(s_bornes_communes, weights) -> float:
 
 
 def compute_bornes_ponderated(df_bornes_communes, weights=None) -> pd.Series:
-    # Deal with deafult values
+    # Deal with default values
     if weights is None:  # by default, 1 for each
         weights = {
             cluster: 1
@@ -174,7 +175,9 @@ def compute_bornes_ponderated(df_bornes_communes, weights=None) -> pd.Series:
 
 # %%
 # Combine all
-def compute_bornes_by_communes_smoothed(gamma=5, dist_max_km=20):
+def compute_bornes_by_communes_smoothed(
+    gamma=5, dist_max_km=20, arro_dict=ARRONDISSEMENT_DICT
+):
     # Read data in database
     gdf_irve = get_bornes_data()
 
@@ -182,6 +185,11 @@ def compute_bornes_by_communes_smoothed(gamma=5, dist_max_km=20):
     df_irve = clean_power_values(gdf_irve)
     # Get features for IRVE
     df_irve = complete_df_irve(df_irve)
+    # Aggregate the cities with arrondissement
+    ## if in the dict, change it, else do nothing
+    df_irve["code_commune_INSEE"] = df_irve["code_commune_INSEE"].apply(
+        lambda x: arro_dict.get(x, x)
+    )
 
     # Compute bornes for each city
     df_bornes_communes = compute_pdc_by_communes(df_irve)
@@ -193,7 +201,6 @@ def compute_bornes_by_communes_smoothed(gamma=5, dist_max_km=20):
     df_bornes_communes_completed = df_bornes_communes.join(
         gdf_comm[["insee", "x_crs_2154", "y_crs_2154"]].set_index("insee")
     )
-    # TODO : gérer les villes à arrondissement pour avoir leur localisation : agg avant les bornes ?
 
     # smooth
     df_bornes_communes_smooth = add_close_pdc_by_power_cluster(
@@ -219,3 +226,22 @@ def get_scenario_weight(scenario):
         return {x: 1 for x in POWER_CLUSTER}
     else:
         raise NotImplementedError(f"Le scénario {scenario} n'a pas de poids associés")
+
+
+if __name__ == "__main__":
+    df_bornes_communes_smooth = compute_bornes_by_communes_smoothed()
+    df_bornes_communes_smooth.to_csv(
+        f"{DATA_PATH}/bornes/df_bornes_communes_smooth.csv"
+    )
+    df_bornes_communes_uniform = compute_bornes_by_communes_ponderated(
+        df_bornes_communes_smooth, "uniform"
+    )
+    df_bornes_communes_uniform.to_csv(
+        f"{DATA_PATH}/bornes/df_bornes_communes_uniform.csv"
+    )
+    df_bornes_communes_smoothed_uniform = compute_bornes_by_communes_ponderated(
+        df_bornes_communes_smooth, "smoothed_uniform"
+    )
+    df_bornes_communes_smoothed_uniform.to_csv(
+        f"{DATA_PATH}/bornes/df_bornes_communes_smoothed_uniform.csv"
+    )
