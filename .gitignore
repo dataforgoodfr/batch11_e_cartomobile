@@ -272,3 +272,6 @@ notebooks/streamlit/datas/dataset_communes_Auver_2022-09-30.feather
 notebooks/ev_routing_Astar.ipynb
 notebooks/durations.pkl
 notebooks/distances.pkl
+notebooks/osm_datas/
+notebooks/cache/
+notebooks/CFG.pkl
