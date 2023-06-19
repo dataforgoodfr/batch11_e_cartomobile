@@ -294,3 +294,6 @@ notebooks/cache/
 
 notebooks/durations.pkl
 notebooks/distances.pkl
+notebooks/osm_datas/
+notebooks/cache/
+notebooks/CFG.pkl
