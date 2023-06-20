@@ -13,8 +13,8 @@ POWER_CLUSTER = ["Low", "Standard", "Fast", "Very Fast"]
 
 
 # %%
-# Get the bornes count by commuens and power
 def compute_bornes_by_communes(df_irve_power_clean):
+    """Get the bornes count by commune and power"""
     df_cluster_plot = df_irve_power_clean.groupby(
         ["code_commune_INSEE", "cluster"]
     ).agg("count")["puissance_nominale"]
@@ -69,8 +69,6 @@ def clean_power_values(gdf_irve):
     return df_irve_power_clean
 
 
-# %%
-#  Combine the communes data
 def add_close_bornes_by_power_cluster_simple(df_bornes_communes, gamma, dist_max_km):
     """
     For a dedicated city, add the irve nearby, depending on the gamma and dist_max_km parameters.
@@ -144,9 +142,8 @@ def complete_df_irve(df_irve):
     return df_irve
 
 
-# %%
-# apply pondaration depending on the scenario
 def compute_unique_bornes_ponderated(s_bornes_communes, weights) -> float:
+    """Apply pondaration depending on the scenario"""
     return np.sum(
         [s_bornes_communes.get(key, 0) * value for key, value in weights.items()]
     )
@@ -173,7 +170,6 @@ def compute_bornes_ponderated(df_bornes_communes, weights=None) -> pd.Series:
     return s_bornes_communes_ponderated
 
 
-# %%
 # Combine all
 def compute_bornes_by_communes_smoothed(
     gamma=5, dist_max_km=20, arro_dict=ARRONDISSEMENT_DICT
