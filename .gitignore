@@ -165,6 +165,8 @@ notebooks/tabular_datas_map_v2.ipynb
 notebooks/CAR_viz.ipynb
 notebooks/ev_routing_Astar.ipynb
 
+notebooks/test_connect_database.ipynb
+
 ## Temp Data
 notebooks/dictionnaire.pkl
 notebooks/datas/communes-20220101.feather
@@ -174,6 +176,7 @@ notebooks/datas/dataset_communes.feather
 notebooks/datas/decoupage_administratif.feather
 notebooks/datas/depatements-regions.feather
 notebooks/datas/tabular_datas_agregated.pkl
+notebooks/datas/datas_perso
 
 notebooks/streamlit/datas/dataset_communes_Auver_2020-12-31.feather
 notebooks/streamlit/datas/dataset_communes_Auver_2021-03-31.feather
@@ -287,5 +290,12 @@ notebooks/streamlit/datas/communes-20220101.feather
 notebooks/streamlit/datas/Communes.feather
 notebooks/streamlit/datas/dataset_communes_Auver_2022-09-30.feather
 
+notebooks/cache
+
+notebooks/cache/
+
 notebooks/durations.pkl
 notebooks/distances.pkl
+notebooks/osm_datas/
+notebooks/cache/
+notebooks/CFG.pkl

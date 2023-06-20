@@ -49,6 +49,38 @@ def graph_connector_types(gdf_irve):
     return fig
 
 
+#
+def graph_station_power_repartition(df_irve_power):
+    """
+    4 Catégories trouvée dans le SDIRVE :
+        1) < 7,4 kW, (pour les deux roues…)
+        2) 7,4 à 22 kW (petite recharge d'appoint)
+        3) 22 à 150 kW (recharge rapide)
+        4) > 150 kW (très haute puissance)
+    """
+    bins = pd.IntervalIndex.from_tuples(
+        [(0, 7.4), (7.4, 22), (22, 150), (150, df_irve_power.puissance_nominale.max())]
+    )
+    df_irve_power_cluster = pd.cut(df_irve_power.puissance_nominale, bins)
+
+    df_irve_power["cluster"] = df_irve_power_cluster
+    df_cluster_plot = df_irve_power.groupby("cluster").agg("sum")
+    df_cluster_plot["cluster_name"] = ["Low", "Standard", "Fast", "Very Fast"]
+
+    fig = px.bar(
+        df_cluster_plot,
+        x="cluster_name",
+        y="count",
+        labels={
+            "count": "Nombre de bornes",
+            "cluster_name": "Gamme de puissance de recharge",
+        },
+        title="Répartiton des puissances des points de recharge",
+    )
+
+    return fig
+
+
 # Graphs depicting the evolution of the number of charging stations
 def graph_stations_evolution(
     irve_ts_file_path="e_cartomobile/data_extract/data_for_viz/irve_time_series.csv",
