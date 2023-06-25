@@ -18,3 +18,6 @@ steps_eu = df_steps.loc[df_steps.region == 'Europe']
 
 df_w = pd.concat([hist_w, steps_w])
 df_eu = pd.concat([hist_eu, steps_eu])
+
+df_w.to_csv(e_cartomobile/data_extract/data_for_viz/ev_world.csv)
+df_eu.to_csv(e_cartomobile/data_extract/data_for_viz/ev_europe.csv)

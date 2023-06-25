@@ -1,6 +1,15 @@
 import pandas as pd
 import plotly.express as px
 
+# Graph with World EV registrations and forecast
+df_w = pd.read_csv(e_cartomobile/data_extract/data_for_viz/ev_world.csv)
+fig = px.line(df_w, x='year', y='value', color='powertrain', markers=True,
+              title = 'EV Registrations in the World')
+fig
+
+fig = px.line(df_eu, x='year', y='value', color='powertrain', markers=True,
+              title = 'EV Registrations in Europe')
+fig
 
 # Graph of different implantation types of charging stations
 def graph_station_types(
