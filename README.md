@@ -1,6 +1,9 @@
 # Data For Good - Batch 11 - E-cartomobile
 
-This project aims at encouraging and planning electric mobility in French territories by developing a Streamlit dashboard leveraging Open-Data for decision makers.
+This project aims at encouraging and planning electric mobility in French territories by developing a dashboard leveraging Open-Data for decision makers.
+
+The technical interface is made with Streamlit for quick iterations, directly in the application. The final interface is made in  https://github.com/Thopiax/batch11_e_cartomobile_ui
+
 
 ## Index
 - [I want to contribute! Where do I start?](#contrib)
