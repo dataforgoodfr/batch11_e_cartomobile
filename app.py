@@ -72,7 +72,9 @@ with tab2:
 
 with tab3:
     with st.expander("Europe", expanded=False):
-        st.write("### En chantier")
+        # st.write("### En chantier")
+        st.plotly_chart(viz_evolution('Europe'))
 
     with st.expander("Monde", expanded=False):
-        st.write("### En chantier - chiffres IEA à intégrer")
+        # st.write("### En chantier - chiffres IEA à intégrer")
+        st.plotly_chart(viz_evolution('World'))
