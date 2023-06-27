@@ -297,3 +297,8 @@ notebooks/distances.pkl
 notebooks/osm_datas/
 notebooks/cache/
 notebooks/CFG.pkl
+Neo4j_container/data
+Neo4j_container/conf
+Neo4j_container/import
+Neo4j_container/logs
+Neo4j_container/plugins
