@@ -1,6 +1,9 @@
 # Data For Good - Batch 11 - E-cartomobile
 
-This project aims at encouraging and planning electric mobility in French territories by developing a Streamlit dashboard leveraging Open-Data for decision makers.
+This project aims at encouraging and planning electric mobility in French territories by developing a dashboard leveraging Open-Data for decision makers.
+
+The technical interface is made with Streamlit for quick iterations, directly in the application. The final interface is made in  https://github.com/Thopiax/batch11_e_cartomobile_ui
+
 
 ## Index
 - [I want to contribute! Where do I start?](#contrib)
@@ -115,11 +118,6 @@ Choisissez la variable "Path" > Modifier... et ajoutez le chemin de votre instal
 :uk: In System Properties > Advanced >  Environment Variables...
 Choose the variable "Path" > Edit... et add the path to your python's installation, where is located the pyhton.exe (by default, this should be at C:\Users\username\AppData\Roaming\Python\Scripts\ )
 
-In the console, you can now try :
-```bash
-poetry --version
-```
-
 </td>
 </tr>
 </table>
@@ -157,9 +155,25 @@ Link : https://wiki.python.org/moin/WindowsCompilers#Microsoft_Visual_C.2B-.2B-_
 
 ```bash
 pip install poetry
+poetry --version
+```
+
+In the console, you can now try :
+```bash
 poetry update
 ```
+
 The virtual environment will be installed in .venv folder.
+
+If the dependency resolution takes forever, you can use this workaround:
+```bash
+poetry export -f requirements.txt > requirements.txt
+python -m pip install -r requirements.txt
+poetry install
+```
+It takes a lower time space to install the package locally since all deps are already installed.
+
+Make sure to run poetry shell before to access the created virtual environment and install on it instead of on user/global path.
 
 When you need to install a new dependency that is not in the pyproject.toml (use a new package, e.g. nltk), run 
 ```bash

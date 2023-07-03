@@ -2,14 +2,9 @@
 
 import os
 
-import pandas as pd
-
 from e_cartomobile.constants import DATA_PATH
 from e_cartomobile.data_extract.communes import get_communes_data
-from e_cartomobile.data_extract.immatriculations import (
-    IMMATRICULATIONS_FILENAME,
-    get_immatriculations_data,
-)
+from e_cartomobile.data_extract.immatriculations import get_immatriculations_data_local
 
 DATE_ARRETE = "2023-03-31"
 CITIES_WITH_ARRONDISSEMENTS = ["PARIS", "MARSEILLE", "LYON"]
@@ -19,16 +14,14 @@ CLEAN_IMMATRICULATIONS_FILENAME = os.path.join(
 COMMUNES_FILENAME = os.path.join(DATA_PATH, "communes-20220101.feather")
 
 
-def clean_immatriculations_data():
+def clean_immatriculations_data_local():
     "Clean raw immatriculations dataset and add communes info"
-    immatriculations = get_immatriculations_data()
+    immatriculations = get_immatriculations_data_local()
     # Get more recent data
     immatriculations = immatriculations[
         immatriculations["date_arrete"] == DATE_ARRETE
     ].copy()
-    # Drop NaN columns (forains, unidentified or very small communes, maybe parts of bigger ones before)
-    immatriculations = immatriculations[~immatriculations["epci"].isna()]
-    immatriculations.codgeo = immatriculations.codgeo.astype(str)
+
     # Process short codgeo
     immatriculations["codgeo"] = immatriculations["codgeo"].apply(
         lambda x: "0" + x if len(x) == 4 else x
@@ -56,8 +49,21 @@ def clean_immatriculations_data():
         ].index,
         inplace=True,
     )
-    # Join communes data, drop geometry (heavy column)
+    # Drop NaN columns (forains, unidentified or very small communes, maybe parts of bigger ones before)
+    immatriculations = immatriculations[~immatriculations["epci"].isna()]
+    immatriculations.codgeo = immatriculations.codgeo.astype(str)
+    # Join communes data, get x,y coordinates and drop geometry (heavy column)
     communes = get_communes_data()
+    communes_xy = (
+        communes.copy()
+        .to_crs({"init": "epsg:2154"})
+        .drop(["nom", "surf_ha", "x", "y"], axis=1)
+        .rename(columns={"geometry": "geometry_xy"})
+    )
+    communes = communes.merge(communes_xy, on="insee", how="left")
+    communes["x_crs_2154"] = communes["geometry_xy"].apply(lambda x: x.centroid.x)
+    communes["y_crs_2154"] = communes["geometry_xy"].apply(lambda x: x.centroid.y)
+    communes.drop(["geometry_xy"], axis=1, inplace=True)
     immatriculations = immatriculations.merge(
         communes, left_on="codgeo", right_on="insee", how="left"
     ).drop(["geometry"], axis=1)
