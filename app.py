@@ -8,7 +8,8 @@ from e_cartomobile.data_analytics.vizualisation_plotly import (
     graph_connector_types,
     graph_station_types,
     graph_stations_evolution,
-    graph_station_power_repartition
+    graph_station_power_repartition,
+    graph_region_evolution
 )
 
 st.set_page_config(
@@ -72,9 +73,7 @@ with tab2:
 
 with tab3:
     with st.expander("Europe", expanded=False):
-        # st.write("### En chantier")
-        st.plotly_chart(viz_evolution('Europe'))
+        st.plotly_chart(graph_region_evolution('Europe'))
 
     with st.expander("Monde", expanded=False):
-        # st.write("### En chantier - chiffres IEA à intégrer")
-        st.plotly_chart(viz_evolution('World'))
+        st.plotly_chart(graph_region_evolution('World'))
