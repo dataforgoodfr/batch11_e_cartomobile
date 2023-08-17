@@ -1,5 +1,34 @@
+# %%
+#
 import pandas as pd
 import plotly.express as px
+
+
+# %%
+# Graph with EV registrations and forecast
+def graph_region_evolution(
+    region: str,
+    hist_path="e_cartomobile/data_extract/data_for_viz/IEA-EV-dataEV salesCarsHistorical.csv",
+    steps_path="e_cartomobile/data_extract/data_for_viz/IEA-EV-dataEV salesCarsProjection-STEPS.csv",
+):
+    df_hist = pd.read_csv(hist_path)
+    df_steps = pd.read_csv(steps_path)
+
+    hist_w = df_hist.loc[df_hist.region == region]
+    steps_w = df_steps.loc[df_steps.region == region]
+
+    df_w = pd.concat([hist_w, steps_w])
+
+    fig = px.line(
+        df_w,
+        x="year",
+        y="value",
+        color="powertrain",
+        line_dash="category",
+        markers=True,
+        title=f"EV Registrations in {region}",
+    )
+    return fig
 
 
 # Graph of different implantation types of charging stations
