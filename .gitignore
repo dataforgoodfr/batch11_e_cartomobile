@@ -178,6 +178,13 @@ notebooks/datas/datas_perso
 notebooks/datas/communes.feather
 notebooks/datas/immat.feather
 notebooks/datas/df_france_tourisme.csv
+notebooks/datas/path_sample_10000_new.parquet
+notebooks/datas/path_sample_10000.parquet
+notebooks/datas/test_paths_mini.parquet
+notebooks/datas/sleeping_score_brut.html
+notebooks/datas/sum_sleeping_visit_on_surface.html
+notebooks/datas/visit_score_brut.html
+
 
 notebooks/streamlit/datas/dataset_communes_Auver_2020-12-31.feather
 notebooks/streamlit/datas/dataset_communes_Auver_2021-03-31.feather
