@@ -131,6 +131,8 @@ dmypy.json
 # Unique Objects
 *:Zone.Identifier
 
+notebooks/cache/
+
 notebooks/datas/maps/carte_all_markers.html
 notebooks/datas/maps/carte_all_markers.min.html
 notebooks/datas/maps/carte_bornes_rechargement.html
@@ -272,3 +274,19 @@ notebooks/streamlit/datas/dataset_communes_Auver_2022-09-30.feather
 notebooks/ev_routing_Astar.ipynb
 notebooks/durations.pkl
 notebooks/distances.pkl
+notebooks/datas/['Bourgogne-Franche-Comté']_drive_charge.graphml
+notebooks/datas/['Bourgogne-Franche-Comté']_drive.graphml
+notebooks/datas/['Grand Est', 'Bourgogne-Franche-Comté', 'Auvergne-Rhône-Alpes']_drive.graphml
+notebooks/datas/['Grand Est']_drive_charge.graphml
+notebooks/datas/['Grand Est']_drive.graphml
+notebooks/datas/['Hauts-de-France']_drive_charge.graphml
+notebooks/datas/['Hauts-de-France']_drive.graphml
+notebooks/datas/['Île-de-France']_drive_charge.graphml
+notebooks/datas/['Île-de-France']_drive.graphml
+notebooks/datas/['Marne']_drive_charge.graphml
+notebooks/datas/['Marne']_drive.graphml
+notebooks/datas/graph_Grand Est.pkl
+notebooks/datas/['Bourgogne-Franche-Comté']_drive_charge.graphml
+notebooks/datas/['Bourgogne-Franche-Comté']_drive_charge.graphml
+notebooks/datas/['Bourgogne-Franche-Comté']_drive_charge.graphml
+notebooks/.vscode/launch.json

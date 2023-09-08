@@ -9,24 +9,24 @@ os.environ['USE_PYGEOS'] = '0'
 import pandas as pd
 import geopandas as gpd
 import numpy as np
+import math
 
 
 # Visualisation
-import matplotlib.pyplot as plt
-import seaborn as sns
+# import matplotlib.pyplot as plt
+# import seaborn as sns
 import folium
-from folium.features import Choropleth
+# from folium.features import Choropleth
 from folium.plugins import MarkerCluster
-
-# Preprocessing
-from sklearn.preprocessing import StandardScaler
-import umap
+from branca.colormap import linear, LinearColormap
+from folium import FeatureGroup
+from shapely.geometry import Polygon, Point
 
 
 # I/O
-import gc
+# import gc
 import io, requests
-import zipfile, shutil
+# import zipfile, shutil
 import joblib
 
 import streamlit as st
@@ -58,7 +58,7 @@ def get_datas(file_path, file_name_1, date):
     )
 
 
-from branca.colormap import linear, LinearColormap
+
 # Function to make a column color 
 def make_color(df, col='VE_per_inhab', color_type=None):
     # Define the color map
@@ -92,9 +92,7 @@ def make_color(df, col='VE_per_inhab', color_type=None):
 icons from https://fontawesome.com/v4/icons/
 
 '''
-from folium.plugins import MarkerCluster
-from folium import FeatureGroup
-import math
+
 
 
 
@@ -209,7 +207,7 @@ def make_map(df,com_df, pdc_df, color_col='VE_per_inhab'):
     return m
 
 
-from shapely.geometry import Polygon, Point
+
 def get_isochrones(df, town, iso, token):
     if iso != [0,0,0,0]:
         origin = df.query("nom == @town").iloc[0].geometry.centroid
