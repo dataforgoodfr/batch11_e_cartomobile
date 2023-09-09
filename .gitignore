@@ -128,9 +128,20 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# Streamlit
+.streamlit/
+
 # Unique Objects
 *:Zone.Identifier
 
+notebooks/cache/
+
+## Application data to download locally
+e_cartomobile/data_extract/data/communes-20220101.feather
+e_cartomobile/data_extract/data/immatriculations_clean.feather
+e_cartomobile/data_extract/data/voitures-rechargeables-par-commune.csv
+
+## maps
 notebooks/datas/maps/carte_all_markers.html
 notebooks/datas/maps/carte_all_markers.min.html
 notebooks/datas/maps/carte_bornes_rechargement.html
@@ -139,12 +150,25 @@ notebooks/datas/maps/carte_traffic_journalier.html
 notebooks/datas/maps/carte_traffic_journalier.min.html
 notebooks/datas/maps/carte_vehicules.html
 notebooks/datas/maps/carte_vehicules.min.html
+
+notebooks/datas/maps/Carte region Grand Est.html
+notebooks/datas/maps/Carte region Normandie.html
+
+notebooks/map.html
+
+## test notebooks
 notebooks/tabular_datas.ipynb
-notebooks/dictionnaire.pkl
 notebooks/all_tabular_datas.ipynb
+notebooks/tabular_datas_clustering_v1.ipynb
+notebooks/tabular_datas_map_v2.ipynb
+
 notebooks/CAR_viz.ipynb
-notebooks/CAR_viz.ipynb
-notebooks/CAR_viz.ipynb
+notebooks/ev_routing_Astar.ipynb
+
+notebooks/test_connect_database.ipynb
+
+## Temp Data
+notebooks/dictionnaire.pkl
 notebooks/datas/communes-20220101.feather
 notebooks/datas/Communes.feather
 notebooks/datas/dataset_charge_points.feather
@@ -152,12 +176,18 @@ notebooks/datas/dataset_communes.feather
 notebooks/datas/decoupage_administratif.feather
 notebooks/datas/depatements-regions.feather
 notebooks/datas/tabular_datas_agregated.pkl
-notebooks/map.html
-notebooks/tabular_datas_clustering_v1.ipynb
-notebooks/tabular_datas_map_v2.ipynb
-notebooks/CAR_viz.ipynb
-notebooks/datas/maps/Carte region Grand Est.html
-notebooks/datas/maps/Carte region Normandie.html
+notebooks/datas/datas_perso
+notebooks/datas/communes.feather
+notebooks/datas/immat.feather
+notebooks/datas/df_france_tourisme.csv
+notebooks/datas/path_sample_10000_new.parquet
+notebooks/datas/path_sample_10000.parquet
+notebooks/datas/test_paths_mini.parquet
+notebooks/datas/sleeping_score_brut.html
+notebooks/datas/sum_sleeping_visit_on_surface.html
+notebooks/datas/visit_score_brut.html
+
+
 notebooks/streamlit/datas/dataset_communes_Auver_2020-12-31.feather
 notebooks/streamlit/datas/dataset_communes_Auver_2021-03-31.feather
 notebooks/streamlit/datas/dataset_communes_Auver_2021-06-30.feather
@@ -165,7 +195,6 @@ notebooks/streamlit/datas/dataset_communes_Auver_2021-09-30.feather
 notebooks/streamlit/datas/dataset_communes_Auver_2021-12-31.feather
 notebooks/streamlit/datas/dataset_communes_Auver_2022-03-31.feather
 notebooks/streamlit/datas/dataset_communes_Auver_2022-06-30.feather
-notebooks/streamlit/datas/dataset_communes_Auver_2022-12-31.feather
 notebooks/streamlit/datas/dataset_communes_Bourg_2020-12-31.feather
 notebooks/streamlit/datas/dataset_communes_Bourg_2021-03-31.feather
 notebooks/streamlit/datas/dataset_communes_Bourg_2021-06-30.feather
@@ -262,6 +291,7 @@ notebooks/streamlit/datas/dataset_communes_Prove_2021-12-31.feather
 notebooks/streamlit/datas/dataset_communes_Prove_2022-03-31.feather
 notebooks/streamlit/datas/dataset_communes_Prove_2022-06-30.feather
 notebooks/streamlit/datas/dataset_communes_Prove_2022-09-30.feather
+
 notebooks/streamlit/datas/consolidation-etalab-schema-irve-statique-v-2.2.0-20230327.feather
 notebooks/streamlit/datas/decoupage_administratif.feather
 notebooks/streamlit/datas/depatements-regions.feather
@@ -269,6 +299,10 @@ notebooks/streamlit/datas/voitures-par-commune-par-energie.feather
 notebooks/streamlit/datas/communes-20220101.feather
 notebooks/streamlit/datas/Communes.feather
 notebooks/streamlit/datas/dataset_communes_Auver_2022-09-30.feather
-notebooks/ev_routing_Astar.ipynb
+
+notebooks/cache
+
+notebooks/cache/
+
 notebooks/durations.pkl
 notebooks/distances.pkl
