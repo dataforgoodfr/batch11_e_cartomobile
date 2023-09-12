@@ -1,35 +1,4 @@
-<<<<<<< HEAD
-
-# for page1_functions streamlit venv creation
-import os
-os.environ['USE_PYGEOS'] = '0'
-
-# Data management
-import pandas as pd
-import geopandas as gpd
-import numpy as np
-import math
-
-
-# Visualisation
-import folium
-from folium.plugins import MarkerCluster
-from branca.colormap import linear, LinearColormap
-from folium import FeatureGroup
-from shapely.geometry import Polygon, Point
-
-
-# I/O
-import io, requests
-import joblib
-
-
-
-from page1_functions import *
-=======
->>>>>>> d9124dcd174307d45d38ea9b2cb06bfad3c4c656
 import streamlit as st
-import streamlit_folium as st_folium
 from page1_functions import get_datas, get_isochrones, make_map
 from streamlit_folium import folium_static
 

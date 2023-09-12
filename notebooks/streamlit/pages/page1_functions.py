@@ -7,35 +7,12 @@ import folium
 import geopandas as gpd
 import joblib
 import numpy as np
-<<<<<<< HEAD
-import math
-
-
-# Visualisation
-# import matplotlib.pyplot as plt
-# import seaborn as sns
-import folium
-# from folium.features import Choropleth
-from folium.plugins import MarkerCluster
-from branca.colormap import linear, LinearColormap
-from folium import FeatureGroup
-from shapely.geometry import Polygon, Point
-
-
-# I/O
-# import gc
-import io, requests
-# import zipfile, shutil
-import joblib
-
-import streamlit as st
-=======
 import pandas as pd
 import requests
 from branca.colormap import LinearColormap
 from folium.plugins import MarkerCluster
 from shapely.geometry import Point, Polygon
->>>>>>> d9124dcd174307d45d38ea9b2cb06bfad3c4c656
+
 
 # tqdm().pandas()
 
@@ -63,13 +40,8 @@ def get_datas(file_path, file_name_1, date):
     return (gpd.read_feather(os.path.join(path_to_datas, file_name_1)), df)
 
 
-<<<<<<< HEAD
 # Function to make a column color 
 def make_color(df, col='VE_per_inhab', color_type=None):
-=======
-# Function to make a column color
-def make_color(df, col="VE_per_inhab", color_type=None):
->>>>>>> d9124dcd174307d45d38ea9b2cb06bfad3c4c656
     # Define the color map
     colors = ["red", "green", "blue"]
     bins = np.array([0, 1, 5, 10, 25, 50, 100]) / 100
@@ -105,14 +77,7 @@ def make_color(df, col="VE_per_inhab", color_type=None):
 """
 icons from https://fontawesome.com/v4/icons/
 
-<<<<<<< HEAD
-'''
-
-
-
-=======
 """
->>>>>>> d9124dcd174307d45d38ea9b2cb06bfad3c4c656
 
 
 def make_map(df, com_df, pdc_df, color_col="VE_per_inhab"):
@@ -223,10 +188,6 @@ def make_map(df, com_df, pdc_df, color_col="VE_per_inhab"):
     return m
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> d9124dcd174307d45d38ea9b2cb06bfad3c4c656
 def get_isochrones(df, town, iso, token):
     if iso != [0, 0, 0, 0]:
         origin = df.query("nom == @town").iloc[0].geometry.centroid
