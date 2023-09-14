@@ -134,6 +134,8 @@ dmypy.json
 # Unique Objects
 *:Zone.Identifier
 
+notebooks/cache/
+
 ## Application data to download locally
 e_cartomobile/data_extract/data/communes-20220101.feather
 e_cartomobile/data_extract/data/immatriculations_clean.feather
