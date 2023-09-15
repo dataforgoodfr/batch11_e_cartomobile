@@ -1,6 +1,6 @@
 ### Generation du graph routier national sous NEO4J
 
-##### Lancer le container Neo4J
+#### Lancer le container Neo4J
 
 Depuis ce même dossier, lancer le container Neo4j avec docker-compose
 
@@ -10,7 +10,7 @@ Au moment de la compilation et du lancement du container, les dossiers conf, dat
 
 Vérifier que les deux fichiers de plugins en .jar (apoc et graph-data-science) ont bien été générés le dossier plugins.
 
-##### Interface Neo4J et première connexion
+#### Interface Neo4J et première connexion
 
 Visualisation :
 
@@ -47,6 +47,45 @@ LE c utilisé ici est une variable qui sert d' "alias" et peut se ré-employer d
 Pour apprendre facilement (et rapidement) le langage Cypher c'est ici -> https://graphacademy.neo4j.com/categories/beginners/
 
 
+#### Requêtes imbriquées dans le code python
+
+Pour les requêtes plus complexes que de la simple visualisation, il faut utiliser le module "neo4j" (pip install neo4j) dans un script python.
+
+Des exemples sont donnés à travers les notebooks de génération du graph...
+
+Le driver doit être initialisé comme suit :
+
+``` driver = GraphDatabase.driver("bolt://localhost:7687",auth=basic_auth("neo4j", PASSWORD_NEO4J)) ```
+
+avec le nom de l'user (par défaut : neo4j) et le mot de passe défini.
+
+L'adresse bolt://localhost:7687 est l'adresse de requête du graph sous Neo4j.
+
+Ensuite on éxécute les reqêtes comme suit :
+
+with driver.session() as session:
+
+    count_list = []
+
+    result = session.execute_write(delete_all)
+
+driver.close()
+
+(Attention, ici c'est une requête pour tout supprimer !)
+
+
+Note : On peut utiliser "session.execute_read" pour optimiser la requête s'il s'agit seulement d'une requête de lecture et non d'écriture.
+
+Il faut préciser la fonction de requête en amont comme une simple fonction python comme suit par exemple :
+
+def delete_all(tx):
+    query = 'MATCH (n) \
+                DETACH DELETE n \
+                RETURN count(*) AS COUNT'
+    result = tx.run(query)
+    return result.data() 
+
+
 
 #### Génération du graph routier
 
@@ -67,7 +106,7 @@ Après quelques minutes, le graph des points routes est généré.
 
 On peut vérifier avec la requête :
 
-```MATCH (p:) RETURN p LIMIT 25```
+```MATCH (p) RETURN p LIMIT 25```
 
 - Ensuite, les autres éléments du graphe (communes, relations NEARLY_TO entre communes et points routes...) peuvent être générés à partir des notebooks qui se situent dans le dossier "notebooks_generation"
 
