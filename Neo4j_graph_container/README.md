@@ -92,7 +92,7 @@ def delete_all(tx):
 ##### Génération du graph de points routiers :
 
 - Tout d'abord, il faut importer le fichier de Micka du graph généré à partir des données d'Open Street Map.
-Comme le fichier est voluminieux pour Git, il faut demander à Micka ce fichier par WeTransfer, par exemple.
+Comme le fichier est voluminieux pour Git, il faut demander à Micka ou Jesshuan, ce fichier par WeTransfer, par exemple.
 
 Le fichier .graphml est à mettre dans le dossier "import".
 
@@ -115,4 +115,10 @@ Il faut suivre l'ordre des numérotations des titres des notebooks.
 Les deux notebooks qui concernent les "NATIONAL_ROAD_POINT" sont optionnels (voire inutiles). (Ce sont des héritages des tentatives d'utilisations du graph de data.gouv avec TMJA.)
 
 Le premier des trois notebooks intitulé "neo4j_generation_graph_communes" qui, comme son nom l'indique, permet de générer les points "communes" (CITY) fait intervenir des fichiers qui ont été préalablement construits par des membres de l'équipe. Ces trois fichiers ont été rassemblés dans le dossier "data_communes" pour éviter de chercher partout ailleurs.
+
+Le deuxième notebook intitulé "neo4j_add_labels_and_index" permet d'élaborer des modifications, apports, ajouts essentiels à l'emploi de l'algorithme de plus court chemin avec Neo4j : ajout de labels, index pour optimisation des calculs, conversion de types, etc...
+
+Le troisième notebook est focalisé sur la connection entre les points routes et les communes, par la génération de relations "NEARLY_TO". Cette construction se fait d'abord sous geopandas (par la jointure entre un fichier des gémoétries des communes et les points routes qui sont ici "gonflées" avec 5km de rayon) avant d'être générées finalement dans le graphe Neo4j. Ce notebook utilise lui aussi un fichier communes_geometry.feather volumineux qui n'est pas présent sur Git.
+
+Il faut demander, comme pour le fichier .graphml précédent, ce fichier à Jesshuan ou Micka, pour transfert par WeTransfer. Il faut ensuite inclure ce fichier dans le dossier "data_communes".
 
