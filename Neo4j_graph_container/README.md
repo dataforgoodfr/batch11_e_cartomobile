@@ -1,6 +1,6 @@
-### Generation du graph routier national sous NEO4J
+## Generation du graph routier national sous NEO4J
 
-#### Lancer le container Neo4J
+### Lancer le container Neo4J
 
 Depuis ce même dossier, lancer le container Neo4j avec docker-compose
 
@@ -10,7 +10,7 @@ Au moment de la compilation et du lancement du container, les dossiers conf, dat
 
 Vérifier que les deux fichiers de plugins en .jar (apoc et graph-data-science) ont bien été générés le dossier plugins.
 
-#### Interface Neo4J et première connexion
+### Interface Neo4J et première connexion
 
 Visualisation :
 
@@ -28,7 +28,7 @@ Et le mot de passe est : neo4j
 À la première connexion, il est possible de redéfinir ce user et  mot de passe.
 
 
-#### Reqêtes en langage Cypher
+### Reqêtes en langage Cypher
 
 Toutes les requêtes d'écritures et de consultation du graph se font grâce au langage Cypher, qui est un langage déclaratif qui peu ressembler, très souvent au SQL.
 
@@ -47,7 +47,7 @@ LE c utilisé ici est une variable qui sert d' "alias" et peut se ré-employer d
 Pour apprendre facilement (et rapidement) le langage Cypher c'est ici -> https://graphacademy.neo4j.com/categories/beginners/
 
 
-#### Requêtes imbriquées dans le code python
+### Requêtes imbriquées dans le code python
 
 Pour les requêtes plus complexes que de la simple visualisation, il faut utiliser le module "neo4j" (pip install neo4j) dans un script python.
 
@@ -86,19 +86,19 @@ def delete_all(tx):
     return result.data() 
 
 
-
-#### Génération du graph routier
-
-##### Génération du graph de points routiers :
+#### Génération du graph de points routiers :
 
 - Tout d'abord, il faut importer le fichier de Micka du graph généré à partir des données d'Open Street Map.
 Comme le fichier est voluminieux pour Git, il faut demander à Micka ou Jesshuan, ce fichier par WeTransfer, par exemple.
 
-Le fichier .graphml est à mettre dans le dossier "import".
+Le fichier .graphml est à mettre dans le dossier "import" qui a été généré par le container Neo4j.
+Il est possible que le dossier 'import" ait été généré avec des droits "root". Il faut donc faire la copie en ligne de commande :
+
+``` sudo cp [path/file/...] [path/import/] ```
 
 Ensuite, se rendre sur l'interface simple à l'adresse http://localhost:7474.
 
-Lancer la requête suivante :
+Lancer, dans la barre de requête de la partie droite de l'écran, la requête suivante :
 
 ```CALL apoc.import.graphml("[france]graph.graphml", {readLabels: true})```
 
@@ -118,7 +118,6 @@ Le premier des trois notebooks intitulé "neo4j_generation_graph_communes" qui, 
 
 Le deuxième notebook intitulé "neo4j_add_labels_and_index" permet d'élaborer des modifications, apports, ajouts essentiels à l'emploi de l'algorithme de plus court chemin avec Neo4j : ajout de labels, index pour optimisation des calculs, conversion de types, etc...
 
-Le troisième notebook est focalisé sur la connection entre les points routes et les communes, par la génération de relations "NEARLY_TO". Cette construction se fait d'abord sous geopandas (par la jointure entre un fichier des gémoétries des communes et les points routes qui sont ici "gonflées" avec 5km de rayon) avant d'être générées finalement dans le graphe Neo4j. Ce notebook utilise lui aussi un fichier communes_geometry.feather volumineux qui n'est pas présent sur Git.
+Le troisième notebook est focalisé sur la connection entre les points routes et les communes, par la génération de relations "NEARLY_TO". Cette construction se fait d'abord sous geopandas (par la jointure entre un fichier des gémoétries des communes et les points routes qui sont ici "gonflées" avec 5km de rayon) avant d'être générées finalement dans le graphe Neo4j. Il utilise notamment une requête url externe ver data.gouv pour récupérer les géométries des communes
 
-Il faut demander, comme pour le fichier .graphml précédent, ce fichier à Jesshuan ou Micka, pour transfert par WeTransfer. Il faut ensuite inclure ce fichier dans le dossier "data_communes".
 
