@@ -3,6 +3,7 @@
 ### Lancer le container Neo4J
 
 Depuis ce même dossier, lancer le container Neo4j avec docker-compose
+Au préalable, les variables d'environnement "NEO4J_server.memory.pagecache.size", etc... peuvent être modifiés selon la capacité de calcul que l'on veut attribuer au graph. (8Go de RAM est déjà bien.)
 
 ``` docker compose up ```
 
