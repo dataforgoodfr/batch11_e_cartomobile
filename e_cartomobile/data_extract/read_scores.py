@@ -5,6 +5,7 @@ from sklearn.preprocessing import QuantileTransformer
 
 from e_cartomobile.infra.database.sql_connection import get_db_connector
 
+
 # %%
 # Récupération des Scores
 def get_score_4(gamma: float, dist_max_km: float) -> pd.DataFrame:
@@ -46,6 +47,7 @@ def get_score_1() -> pd.DataFrame:
 
     return output
 
+
 # %%
 # Récupération des bornes
 def get_bornes_smoothed_uniform_scenario() -> pd.DataFrame:
@@ -59,6 +61,7 @@ def get_bornes_smoothed_uniform_scenario() -> pd.DataFrame:
     output.name = "bornes_smoothed_uniform_scenario"
 
     return output
+
 
 # %%
 # Calcul des besoins
@@ -77,7 +80,8 @@ def compute_besoin_local() -> pd.DataFrame:
 
     return s_besoin_local
 
-def compute_besoin_tourisme(esp = 1e-5) -> pd.DataFrame:
+
+def compute_besoin_tourisme(esp=1e-5) -> pd.DataFrame:
     """
     The esp value is necessary to impose a minimum value to the need of charging station
     """
