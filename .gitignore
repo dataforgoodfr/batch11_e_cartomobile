@@ -300,6 +300,8 @@ notebooks/osm_datas/
 notebooks/cache/
 notebooks/CFG.pkl
 
+notebooks/**/db_snapshot_exp_*
+
 Neo4j_container/data
 Neo4j_container/conf
 Neo4j_container/import
