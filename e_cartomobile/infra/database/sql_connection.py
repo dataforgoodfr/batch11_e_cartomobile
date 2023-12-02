@@ -1,5 +1,5 @@
-import streamlit as st
 import psycopg2
+import streamlit as st
 
 
 @st.cache_resource(ttl=3600)

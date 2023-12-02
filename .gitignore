@@ -141,6 +141,8 @@ e_cartomobile/data_extract/data/communes-20220101.feather
 e_cartomobile/data_extract/data/immatriculations_clean.feather
 e_cartomobile/data_extract/data/voitures-rechargeables-par-commune.csv
 
+e_cartomobile/data_extract/data/bornes
+
 ## maps
 notebooks/datas/maps/carte_all_markers.html
 notebooks/datas/maps/carte_all_markers.min.html
@@ -308,7 +310,7 @@ notebooks/durations.pkl
 notebooks/distances.pkl
 notebooks/osm_datas/
 notebooks/cache/
-notebooks/CFG.pkl
+
 Neo4j_graph_container/data
 Neo4j_graph_container/conf
 Neo4j_graph_container/import
