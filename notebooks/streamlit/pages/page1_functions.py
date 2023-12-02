@@ -13,6 +13,7 @@ from branca.colormap import LinearColormap
 from folium.plugins import MarkerCluster
 from shapely.geometry import Point, Polygon
 
+
 # tqdm().pandas()
 
 os.environ["USE_PYGEOS"] = "0"
@@ -39,8 +40,8 @@ def get_datas(file_path, file_name_1, date):
     return (gpd.read_feather(os.path.join(path_to_datas, file_name_1)), df)
 
 
-# Function to make a column color
-def make_color(df, col="VE_per_inhab", color_type=None):
+# Function to make a column color 
+def make_color(df, col='VE_per_inhab', color_type=None):
     # Define the color map
     colors = ["red", "green", "blue"]
     bins = np.array([0, 1, 5, 10, 25, 50, 100]) / 100

@@ -1,5 +1,4 @@
 import streamlit as st
-import streamlit_folium as st_folium
 from page1_functions import get_datas, get_isochrones, make_map
 from streamlit_folium import folium_static
 

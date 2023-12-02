@@ -1,0 +1,22 @@
+version: '3'
+services:
+  neo4j:
+    image: neo4j:5.7
+    restart: unless-stopped
+    ports:
+      - 7474:7474
+      - 7687:7687
+    volumes:
+      - ./conf:/conf
+      - ./data:/data
+      - ./import:/import
+      - ./logs:/logs
+      - ./plugins:/plugins
+    environment: 
+      - NEO4J_server.memory.pagecache.size=8G
+      - NEO4J_dbms.memory.heap.initial_size=8G
+      - NEO4J_server.memory.heap.max_size=8G
+      - NEO4J_apoc_export_file_enabled=true
+      - NEO4J_apoc_import_file_enabled=true
+      - NEO4J_apoc_import_file_use__neo4j__config=true
+      - NEO4J_PLUGINS=["apoc", "graph-data-science"]
