@@ -1,3 +1,5 @@
+# %%
+# Importations
 import numpy as np
 import pandas as pd
 
@@ -13,6 +15,7 @@ POWER_CLUSTER = ["Low", "Standard", "Fast", "Very Fast"]
 
 
 # %%
+# Support functions
 def compute_bornes_by_communes(df_irve_power_clean):
     """Get the bornes count by commune and power"""
     df_cluster_plot = df_irve_power_clean.groupby(
@@ -212,21 +215,53 @@ def compute_bornes_by_communes_smoothed(
 def compute_bornes_by_communes_ponderated(
     df_bornes_communes_smooth, scenario="default"
 ):
+    """
+    Compute the bornes by communes ponderated, depending on the scenario.
+
+    Parameters:
+        df_bornes_communes_smooth (pd.DataFrame): The dataframe containing the bornes by communes.
+        scenario (str, optional): The scenario to be used for computation. Defaults to "default".
+
+    Returns:
+        The result of the computation (pd.Series).
+    """
     return compute_bornes_ponderated(
         df_bornes_communes_smooth, get_scenario_weight(scenario)
     )
 
 
 def get_scenario_weight(scenario):
-    # Dummy fonction : to complete
+    # POWER_CLUSTER = ["Low", "Standard", "Fast", "Very Fast"]
     if scenario in ["default", "smoothed_uniform"]:
         return {x: 1 for x in [cluster + "_completed" for cluster in POWER_CLUSTER]}
+    elif scenario in ["smoothed_reseau"]:
+        return {
+            "Low_completed": 0,
+            "Standard_completed": 0.02,
+            "Fast_completed": 0.28,
+            "Very Fast_completed": 0.70,
+        }
+    elif scenario in ["smoothed_tourisme"]:
+        return {
+            "Low_completed": 0.05,
+            "Standard_completed": 0.20,
+            "Fast_completed": 0.40,
+            "Very Fast_completed": 0.35,
+        }
+    elif scenario in ["smoothed_local"]:
+        return {
+            "Low_completed": 0.10,
+            "Standard_completed": 0.35,
+            "Fast_completed": 0.40,
+            "Very Fast_completed": 0.15,
+        }
     elif scenario == "uniform":
         return {x: 1 for x in POWER_CLUSTER}
     else:
         raise NotImplementedError(f"Le scénario {scenario} n'a pas de poids associés")
 
-
+# %%
+# Main
 if __name__ == "__main__":
     df_bornes_communes_smooth = compute_bornes_by_communes_smoothed()
     df_bornes_communes_smooth.drop(columns=["x_crs_2154", "y_crs_2154"]).to_csv(
