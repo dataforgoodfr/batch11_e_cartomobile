@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 from e_cartomobile.constants import ARRONDISSEMENT_DICT, DATA_PATH
-from e_cartomobile.data_extract.bornes import get_bornes_data
+from e_cartomobile.data_extract.bornes import get_bornes_data, get_bornes_data_combined
 from e_cartomobile.data_extract.communes import get_communes_data
 from e_cartomobile.data_transform.compute_score_4 import (  # same distance collection
     score_4_target_commune,
@@ -172,13 +172,17 @@ def compute_bornes_ponderated(df_bornes_communes, weights=None) -> pd.Series:
 
 # Combine all
 def compute_bornes_by_communes_smoothed(
-    gamma=5, dist_max_km=20, arro_dict=ARRONDISSEMENT_DICT
+    gamma=5, dist_max_km=20, arro_dict=ARRONDISSEMENT_DICT, origin="default"
 ):
-    # Read data in database
-    gdf_irve = get_bornes_data()
+    if origin in ["default", "github"]:
+        # Read data in github - already cleaned values
+        df_irve = get_bornes_data_combined()
+    elif origin in ["database"]:
+        # Read data in database
+        gdf_irve = get_bornes_data()
+        # Clean Power values
+        df_irve = clean_power_values(gdf_irve)
 
-    # Clean Power values
-    df_irve = clean_power_values(gdf_irve)
     # Get features for IRVE
     df_irve = complete_df_irve(df_irve)
     # Aggregate the cities with arrondissement
