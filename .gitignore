@@ -311,6 +311,8 @@ notebooks/distances.pkl
 notebooks/osm_datas/
 notebooks/cache/
 
+notebooks/**/db_snapshot_exp_*
+
 Neo4j_graph_container/data
 Neo4j_graph_container/conf
 Neo4j_graph_container/import
