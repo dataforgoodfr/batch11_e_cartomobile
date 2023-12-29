@@ -260,6 +260,7 @@ def get_scenario_weight(scenario):
     else:
         raise NotImplementedError(f"Le scénario {scenario} n'a pas de poids associés")
 
+
 # %%
 # Main
 if __name__ == "__main__":
