@@ -13,14 +13,14 @@ POWER_CLUSTER = ["Low", "Standard", "Fast", "Very Fast"]
 
 
 # %%
-def compute_bornes_by_communes(df_irve_power_clean):
+def compute_bornes_by_communes(df_irve_power_clean, insee_label = "code_commune_INSEE"):
     """Get the bornes count by commune and power"""
     df_cluster_plot = df_irve_power_clean.groupby(
-        ["code_commune_INSEE", "cluster"]
+        [insee_label, "cluster"]
     ).agg("count")["puissance_nominale"]
 
     df_bornes_communes = df_cluster_plot.reset_index().pivot(
-        index="code_commune_INSEE", columns="cluster"
+        index=insee_label, columns="cluster"
     )
     df_bornes_communes.columns = (
         POWER_CLUSTER  # warning : depends on compute_power_cluster bins
@@ -29,13 +29,13 @@ def compute_bornes_by_communes(df_irve_power_clean):
     return df_bornes_communes
 
 
-def compute_pdc_by_communes(df_irve_power_clean):
+def compute_pdc_by_communes(df_irve_power_clean, insee_label = "code_commune_INSEE"):
     df_cluster_plot = df_irve_power_clean.groupby(
-        ["code_commune_INSEE", "cluster"]
+        [insee_label, "cluster"]
     ).agg("sum")["nbre_pdc"]
 
     df_bornes_communes = df_cluster_plot.reset_index().pivot(
-        index="code_commune_INSEE", columns="cluster"
+        index=insee_label, columns="cluster"
     )
     df_bornes_communes.columns = (
         POWER_CLUSTER  # warning : depends on compute_power_cluster bins
@@ -167,6 +167,9 @@ def compute_bornes_ponderated(df_bornes_communes, weights=None) -> pd.Series:
         lambda x: compute_unique_bornes_ponderated(x, weights_normalized), axis=1
     )
 
+    s_bornes_communes_ponderated.index.name = "insee"
+    s_bornes_communes_ponderated.name = "bornes_score"
+
     return s_bornes_communes_ponderated
 
 
@@ -177,22 +180,24 @@ def compute_bornes_by_communes_smoothed(
     if origin in ["default", "github"]:
         # Read data in github - already cleaned values
         df_irve = get_bornes_data_combined()
+        insee_label = "code_insee_commune"
     elif origin in ["database"]:
-        # Read data in database
+        # Read data in database - old format
         gdf_irve = get_bornes_data()
         # Clean Power values
         df_irve = clean_power_values(gdf_irve)
+        insee_label = "code_commune_INSEE"
 
     # Get features for IRVE
     df_irve = complete_df_irve(df_irve)
     # Aggregate the cities with arrondissement
     ## if in the dict, change it, else do nothing
-    df_irve["code_commune_INSEE"] = df_irve["code_commune_INSEE"].apply(
+    df_irve[insee_label] = df_irve[insee_label].apply(
         lambda x: arro_dict.get(x, x)
     )
 
     # Compute bornes for each city
-    df_bornes_communes = compute_pdc_by_communes(df_irve)
+    df_bornes_communes = compute_pdc_by_communes(df_irve,insee_label=insee_label)
     # Complete city with position data
     gdf_comm = get_communes_data()
     gdf_comm[["x_crs_2154", "y_crs_2154"]] = np.array(

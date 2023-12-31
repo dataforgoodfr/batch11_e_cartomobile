@@ -104,5 +104,6 @@ order by puissance_nominale"""
 
 
 def get_bornes_data_combined():
-    filelink = "https://github.com/BastienGauthier/clean_french_irve/blob/main/data/df_irve_etalab_cleaned_combined.csv"
-    return pd.read_csv(filelink, index_col=0)
+    filelink = "https://raw.githubusercontent.com/BastienGauthier/clean_french_irve/main/data/df_irve_etalab_cleaned_combined.csv"
+    df_bornes = pd.read_csv(filelink, index_col=0)
+    return df_bornes

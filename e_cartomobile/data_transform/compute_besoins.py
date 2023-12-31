@@ -25,7 +25,7 @@ def compute_besoin_local() -> pd.Series:
     besoin_local_scaled = scaler.fit_transform(besoin_local.values.reshape(-1, 1))
 
     s_besoin_local = pd.Series(
-        besoin_local_scaled.T[0], index=besoin_local.index, name="besoin_local"
+        besoin_local_scaled.T[0], index=besoin_local.index, name="besoin"
     )
 
     return s_besoin_local
@@ -47,7 +47,7 @@ def compute_besoin_tourisme(esp=1e-5) -> pd.Series:
     )
 
     s_besoin_tourisme = pd.Series(
-        besoin_tourisme_scaled.T[0], index=besoin_tourisme.index, name="besoin_tourisme"
+        besoin_tourisme_scaled.T[0], index=besoin_tourisme.index, name="besoin"
     )
 
     return s_besoin_tourisme
@@ -66,7 +66,7 @@ def compute_besoin_reseau() -> pd.Series:
     )
 
     s_besoin_reseau = pd.Series(
-        besoin_reseau_scaled.T[0], index=besoin_reseau.index, name="besoin_reseau"
+        besoin_reseau_scaled.T[0], index=besoin_reseau.index, name="besoin"
     )
 
     return s_besoin_reseau
