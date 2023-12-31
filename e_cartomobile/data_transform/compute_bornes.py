@@ -13,11 +13,11 @@ POWER_CLUSTER = ["Low", "Standard", "Fast", "Very Fast"]
 
 
 # %%
-def compute_bornes_by_communes(df_irve_power_clean, insee_label = "code_commune_INSEE"):
+def compute_bornes_by_communes(df_irve_power_clean, insee_label="code_commune_INSEE"):
     """Get the bornes count by commune and power"""
-    df_cluster_plot = df_irve_power_clean.groupby(
-        [insee_label, "cluster"]
-    ).agg("count")["puissance_nominale"]
+    df_cluster_plot = df_irve_power_clean.groupby([insee_label, "cluster"]).agg(
+        "count"
+    )["puissance_nominale"]
 
     df_bornes_communes = df_cluster_plot.reset_index().pivot(
         index=insee_label, columns="cluster"
@@ -29,10 +29,10 @@ def compute_bornes_by_communes(df_irve_power_clean, insee_label = "code_commune_
     return df_bornes_communes
 
 
-def compute_pdc_by_communes(df_irve_power_clean, insee_label = "code_commune_INSEE"):
-    df_cluster_plot = df_irve_power_clean.groupby(
-        [insee_label, "cluster"]
-    ).agg("sum")["nbre_pdc"]
+def compute_pdc_by_communes(df_irve_power_clean, insee_label="code_commune_INSEE"):
+    df_cluster_plot = df_irve_power_clean.groupby([insee_label, "cluster"]).agg("sum")[
+        "nbre_pdc"
+    ]
 
     df_bornes_communes = df_cluster_plot.reset_index().pivot(
         index=insee_label, columns="cluster"
@@ -192,12 +192,10 @@ def compute_bornes_by_communes_smoothed(
     df_irve = complete_df_irve(df_irve)
     # Aggregate the cities with arrondissement
     ## if in the dict, change it, else do nothing
-    df_irve[insee_label] = df_irve[insee_label].apply(
-        lambda x: arro_dict.get(x, x)
-    )
+    df_irve[insee_label] = df_irve[insee_label].apply(lambda x: arro_dict.get(x, x))
 
     # Compute bornes for each city
-    df_bornes_communes = compute_pdc_by_communes(df_irve,insee_label=insee_label)
+    df_bornes_communes = compute_pdc_by_communes(df_irve, insee_label=insee_label)
     # Complete city with position data
     gdf_comm = get_communes_data()
     gdf_comm[["x_crs_2154", "y_crs_2154"]] = np.array(
