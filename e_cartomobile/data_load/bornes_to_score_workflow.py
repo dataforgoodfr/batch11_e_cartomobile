@@ -45,7 +45,8 @@ df_bornes_communes_smoothed_local.to_sql(
 # df_bornes_smoothed_local = get_bornes_smoothed_local()  # Should be the same as df_bornes_communes_smoothed_*
 s_besoin_local = compute_besoin_local()
 df_besoin_local = pd.DataFrame(s_besoin_local).reset_index()
-df_besoin_local.to_sql(name="besoin_local_test", con=engine, if_exists="replace")
+df_besoin_local.index.name = "id"
+df_besoin_local.to_sql(name="besoin_local", con=engine, if_exists="replace")
 
 # Besoin tourisme
 s_bornes_communes_smoothed_tourisme = compute_bornes_by_communes_ponderated(
@@ -60,7 +61,8 @@ df_bornes_communes_smoothed_tourisme.to_sql(
 # df_bornes_smoothed_tourisme = get_bornes_smoothed_tourisme()
 s_besoin_tourisme = compute_besoin_tourisme()
 df_besoin_tourisme = pd.DataFrame(s_besoin_tourisme).reset_index()
-df_besoin_tourisme.to_sql(name="besoin_tourisme_test", con=engine, if_exists="replace")
+df_besoin_tourisme.index.name = "id"
+df_besoin_tourisme.to_sql(name="besoin_tourisme", con=engine, if_exists="replace")
 
 # Besoin reseau
 s_bornes_communes_smoothed_reseau = compute_bornes_by_communes_ponderated(
@@ -75,4 +77,12 @@ df_bornes_communes_smoothed_reseau.to_sql(
 # df_bornes_smoothed_reseau = get_bornes_smoothed_reseau()
 s_besoin_reseau = compute_besoin_reseau()
 df_besoin_reseau = pd.DataFrame(s_besoin_reseau).reset_index()
-df_besoin_reseau.to_sql(name="besoin_reseau_test", con=engine, if_exists="replace")
+df_besoin_reseau.index.name = "id"
+df_besoin_reseau.to_sql(name="besoin_reseau", con=engine, if_exists="replace")
+
+# %%
+# Save final results
+df_besoin = pd.concat([s_besoin_local, s_besoin_tourisme, s_besoin_reseau], axis=1)
+df_besoin.columns = ["local", "tourisme", "reseau"]
+df_besoin["cumul"] = df_besoin.mean(axis=1)
+df_besoin.to_csv("./e_cartomobile/content/df_besoin.csv")

@@ -103,7 +103,16 @@ order by puissance_nominale"""
     return df_irve_power_clean
 
 
+def clean_insee(insee_label):
+    try:
+        label = float(insee_label)
+        return f"{int(label):05d}"
+    except:
+        return insee_label
+
+
 def get_bornes_data_combined():
     filelink = "https://raw.githubusercontent.com/BastienGauthier/clean_french_irve/main/data/df_irve_etalab_cleaned_combined.csv"
     df_bornes = pd.read_csv(filelink, index_col=0)
+    df_bornes["code_insee_commune"] = df_bornes["code_insee_commune"].apply(clean_insee)
     return df_bornes

@@ -71,7 +71,7 @@ def get_bornes_smoothed_local() -> pd.DataFrame:
 
 
 def get_bornes_smoothed_tourisme() -> pd.DataFrame:
-    return get_bornes_from_scenario("bornes_smoothed_toursime")
+    return get_bornes_from_scenario("bornes_smoothed_tourisme")
 
 
 def get_bornes_smoothed_reseau() -> pd.DataFrame:
