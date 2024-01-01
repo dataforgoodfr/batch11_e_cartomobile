@@ -1,7 +1,6 @@
 # %%
 # Importation
 import pandas as pd
-from sklearn.preprocessing import QuantileTransformer
 
 from e_cartomobile.infra.database.sql_connection import get_db_connector
 
@@ -50,73 +49,30 @@ def get_score_1() -> pd.DataFrame:
 
 # %%
 # Récupération des bornes
-def get_bornes_smoothed_uniform_scenario() -> pd.DataFrame:
+def get_bornes_from_scenario(table_name: str) -> pd.DataFrame:
     conn = get_db_connector()
 
-    req = "SELECT insee, bornes_score FROM bornes_smoothed_uniform_scenario"
+    req = f"SELECT insee, bornes_score FROM {table_name}"
 
     output = pd.read_sql(req, conn)
 
     output = output.set_index("insee").squeeze()
-    output.name = "bornes_smoothed_uniform_scenario"
+    output.name = table_name
 
     return output
 
 
-# %%
-# Calcul des besoins
-def compute_besoin_local() -> pd.DataFrame:
-    bornes_smoothed_uniform_scenario = get_bornes_smoothed_uniform_scenario()
-    score_4 = get_score_4(5, 20)
-
-    besoin_local = bornes_smoothed_uniform_scenario / score_4
-    besoin_local = besoin_local.fillna(0)
-    scaler = QuantileTransformer()
-    besoin_local_scaled = scaler.fit_transform(besoin_local.values.reshape(-1, 1))
-
-    s_besoin_local = pd.Series(
-        besoin_local_scaled.T[0], index=besoin_local.index, name="besoin_local"
-    )
-
-    return s_besoin_local
+def get_bornes_smoothed_uniform_scenario() -> pd.DataFrame:
+    return get_bornes_from_scenario("bornes_smoothed_uniform_scenario")
 
 
-def compute_besoin_tourisme(esp=1e-5) -> pd.DataFrame:
-    """
-    The esp value is necessary to impose a minimum value to the need of charging station
-    """
-    bornes_smoothed_uniform_scenario = get_bornes_smoothed_uniform_scenario()
-    score_2 = get_score_2()
-
-    besoin_tourisme = bornes_smoothed_uniform_scenario / (score_2 + esp)
-    besoin_tourisme = besoin_tourisme.fillna(0)
-
-    scaler_tourisme = QuantileTransformer()
-    besoin_tourisme_scaled = scaler_tourisme.fit_transform(
-        besoin_tourisme.values.reshape(-1, 1)
-    )
-
-    s_besoin_tourisme = pd.Series(
-        besoin_tourisme_scaled.T[0], index=besoin_tourisme.index, name="besoin_tourisme"
-    )
-
-    return s_besoin_tourisme
+def get_bornes_smoothed_local() -> pd.DataFrame:
+    return get_bornes_from_scenario("bornes_smoothed_local")
 
 
-def compute_besoin_reseau() -> pd.DataFrame:
-    bornes_smoothed_uniform_scenario = get_bornes_smoothed_uniform_scenario()
-    score_1 = get_score_1()
+def get_bornes_smoothed_tourisme() -> pd.DataFrame:
+    return get_bornes_from_scenario("bornes_smoothed_toursime")
 
-    besoin_reseau = bornes_smoothed_uniform_scenario / score_1
-    besoin_reseau = besoin_reseau.fillna(0)
 
-    scaler_reseau = QuantileTransformer()
-    besoin_reseau_scaled = scaler_reseau.fit_transform(
-        besoin_reseau.values.reshape(-1, 1)
-    )
-
-    s_besoin_reseau = pd.Series(
-        besoin_reseau_scaled.T[0], index=besoin_reseau.index, name="besoin_reseau"
-    )
-
-    return s_besoin_reseau
+def get_bornes_smoothed_reseau() -> pd.DataFrame:
+    return get_bornes_from_scenario("bornes_smoothed_reseau")
