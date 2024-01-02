@@ -22,7 +22,9 @@ The technical interface is made with Streamlit for quick iterations, directly in
         content ------------------------ documentation
         data_analytics ----------------- methods and figures for final dashboard
         data_extracts ------------------ methods to extract raw data & some actual extracts
+        data_load ---------------------- methods dealing with complete workflow and upload to database
         data_transform ----------------- methods related to process raw and aggregated data
+        infra -------------------------- methods related to database connections
         utils -------------------------- common in-memory data (Constants, colors, ...)
         tests -------------------------- unit tests
 - notebooks ---------------------------- R&D notebooks
