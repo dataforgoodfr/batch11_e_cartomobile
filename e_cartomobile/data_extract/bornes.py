@@ -107,7 +107,7 @@ def clean_insee(insee_label):
     try:
         label = float(insee_label)
         return f"{int(label):05d}"
-    except:
+    except ValueError:
         return insee_label
 
 
