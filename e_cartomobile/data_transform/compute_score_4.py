@@ -42,7 +42,7 @@ def score_4_target_commune(
     return score
 
 
-def compute_score_4(gamma: float, dist_max_km: float) -> pd.DataFrame:
+def compute_score_4_local(gamma: float, dist_max_km: float) -> pd.DataFrame:
     """Computes score 4 for all communes in immatriculations dataframe.
 
     Args:
@@ -57,6 +57,22 @@ def compute_score_4(gamma: float, dist_max_km: float) -> pd.DataFrame:
     if not Path(CLEAN_IMMATRICULATIONS_FILENAME).is_file():
         clean_immatriculations_data_local()
     immatriculations = pd.read_feather(CLEAN_IMMATRICULATIONS_FILENAME)
+
+    return compute_score_4(immatriculations, gamma, dist_max_km)
+
+
+def compute_score_4(immatriculations, gamma: float, dist_max_km: float) -> pd.DataFrame:
+    """Computes score 4 for all communes in immatriculations dataframe.
+
+    Args:
+        gamma (float): Damping coefficient.
+          If gamma=0, all cars in the surroundings are summed.
+          If gamma->infinite, only the cars from the commune are summed.
+        dist_max_km (float): Max distance in km defining commune surroundings.
+
+    Returns:
+        pd.DataFrame: DataFrame with insee code of the commune and score 4.
+    """
     immatriculations["score_4"] = immatriculations.apply(
         lambda x: score_4_target_commune(
             gamma,
