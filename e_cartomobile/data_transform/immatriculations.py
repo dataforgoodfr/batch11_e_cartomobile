@@ -138,5 +138,6 @@ def clean_immatriculations_data(raw_immatriculations):
     ).drop(["geometry"], axis=1)
     # Correct the format to cover EPCI ZZZZZZZZZ case (commune without EPCI)
     immatriculations["epci"] = immatriculations["epci"].astype("str")
-    # Save
+    # Drop NaN columns (communes fusionnées)
+    immatriculations = immatriculations[~immatriculations["insee"].isna()]
     return immatriculations

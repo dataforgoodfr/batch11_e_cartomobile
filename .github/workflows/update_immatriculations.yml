@@ -1,0 +1,35 @@
+name: scrap-etalab
+
+on:
+  workflow_dispatch: # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
+
+  schedule: # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
+    - cron:  '00 5 1 * *'  # every 1st of the month at 05:00 UTC
+
+env:
+  PYTHON_VERSION: '3.9'
+  POETRY_VERSION: '1.5.1'
+
+jobs:
+  scrap-etalab:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - uses: actions/checkout@v4
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: ${{ env.POETRY_VERSION }}
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+
+      - name: Verify poetry.lock agrees with pyproject.toml
+        run: poetry lock --check
+      - name: Install dependencies
+        run: poetry install --no-interaction --no-ansi --no-root
+      - name: RunImmatriculationsWorkflow
+        run: |
+          poetry run python e_cartomobile/data_load/immatriculations_workflow.py
+
