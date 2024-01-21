@@ -32,7 +32,8 @@ def compute_bornes_by_communes(df_irve_power_clean, insee_label="code_commune_IN
 
 
 def compute_pdc_by_communes(df_irve_power_clean, insee_label="code_commune_INSEE"):
-    df_cluster_plot = df_irve_power_clean.groupby([insee_label, "cluster"]).agg("sum")[
+    # Si l'insee_label n'existe pas, le pdc n'est pas compté
+    df_cluster_plot = df_irve_power_clean.groupby([insee_label, "cluster"]).agg("count")[
         "nbre_pdc"
     ]
 
