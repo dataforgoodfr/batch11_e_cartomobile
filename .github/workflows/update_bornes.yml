@@ -1,4 +1,4 @@
-name: scrap-etalab
+name: update-bornes
 
 on:
   workflow_dispatch: # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
