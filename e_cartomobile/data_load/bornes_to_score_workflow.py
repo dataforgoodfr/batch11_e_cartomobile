@@ -1,5 +1,9 @@
 # %%
 # Importation
+import os
+import sys
+sys.path.insert(0, os.getcwd())
+
 import pandas as pd
 from e_cartomobile.data_extract.bornes import get_bornes_data_combined
 from e_cartomobile.data_transform.compute_bornes import (
