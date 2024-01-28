@@ -13,6 +13,12 @@ env:
 jobs:
   scrap-etalab:
     runs-on: ubuntu-latest
+    env:
+      DATABASE: ${{ secrets.DATABASE }}
+      USER: ${{ secrets.USER }}
+      PASSWORD: ${{ secrets.PASSWORD }}
+      HOST: ${{ secrets.HOST }}
+      PORT: ${{ secrets.PORT }}
     steps:
       - uses: actions/setup-python@v5
         with:
