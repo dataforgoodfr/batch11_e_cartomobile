@@ -27,7 +27,12 @@ def get_db_connector():
 @st.cache_resource(ttl=3600)
 def get_db_engine():
     sec = get_db_environment()
+    user = sec["user"]
+    password = sec["password"]
+    host = sec["host"]
+    port = sec["port"]
+    database = sec["database"]
     db_engine = create_engine(
-        f"postgresql://{sec.user}:{sec.password}@{sec.host}:{sec.port}/{sec.database}"
+        f"postgresql://{user}:{password}@{host}:{port}/{database}"
     )
     return db_engine
