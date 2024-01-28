@@ -11,7 +11,7 @@ env:
   POETRY_VERSION: '1.5.1'
 
 jobs:
-  scrap-etalab:
+  update-immatriculations:
     runs-on: ubuntu-latest
     env:
       DATABASE: ${{ secrets.DATABASE }}
