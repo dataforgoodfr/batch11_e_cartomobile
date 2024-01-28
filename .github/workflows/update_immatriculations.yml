@@ -34,7 +34,7 @@ jobs:
       - name: Verify poetry.lock agrees with pyproject.toml
         run: poetry lock --check
       - name: Install dependencies
-        run: poetry install --no-interaction --no-ansi --no-root
+        run: poetry install --no-interaction --no-ansi
       - name: RunImmatriculationsWorkflow
         run: |
           poetry run python e_cartomobile/data_load/immatriculations_workflow.py
