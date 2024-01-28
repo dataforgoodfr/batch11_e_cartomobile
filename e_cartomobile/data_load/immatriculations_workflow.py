@@ -1,5 +1,9 @@
 # %%
 # Importation
+import os
+import sys
+sys.path.insert(0, os.getcwd())
+
 import datetime as dt
 
 from e_cartomobile.data_extract.immatriculations import get_immatriculations_data_online
