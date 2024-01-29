@@ -2,6 +2,7 @@
 # Importation
 import os
 import sys
+
 sys.path.insert(0, os.getcwd())
 
 import pandas as pd
