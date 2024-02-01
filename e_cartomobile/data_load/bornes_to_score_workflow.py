@@ -3,22 +3,21 @@
 import os
 import sys
 
+import pandas as pd
+
 sys.path.insert(0, os.getcwd())
 
-import pandas as pd
-from e_cartomobile.data_extract.bornes import get_bornes_data_combined
-from e_cartomobile.data_transform.compute_bornes import (
-    compute_bornes_by_communes_smoothed,
-    compute_bornes_by_communes_ponderated,
-)
-from e_cartomobile.data_transform.compute_besoins import (
+from e_cartomobile.data_extract.bornes import get_bornes_data_combined  # noqa: E402
+from e_cartomobile.data_transform.compute_besoins import (  # noqa: E402
     compute_besoin_local,
-    compute_besoin_tourisme,
     compute_besoin_reseau,
+    compute_besoin_tourisme,
 )
-
-from e_cartomobile.infra.database.sql_connection import get_db_engine
-
+from e_cartomobile.data_transform.compute_bornes import (  # noqa: E402
+    compute_bornes_by_communes_ponderated,
+    compute_bornes_by_communes_smoothed,
+)
+from e_cartomobile.infra.database.sql_connection import get_db_engine  # noqa: E402
 
 # %%
 # Connexion

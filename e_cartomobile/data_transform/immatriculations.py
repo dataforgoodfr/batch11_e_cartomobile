@@ -1,6 +1,7 @@
 """Clean raw immatriculations dataset."""
 
 import os
+
 import pandas as pd
 
 from e_cartomobile.constants import DATA_PATH

@@ -5,8 +5,8 @@ from sklearn.preprocessing import QuantileTransformer
 
 from e_cartomobile.data_extract.read_scores import (
     get_bornes_smoothed_local,
-    get_bornes_smoothed_tourisme,
     get_bornes_smoothed_reseau,
+    get_bornes_smoothed_tourisme,
     get_score_1,
     get_score_2,
     get_score_4,

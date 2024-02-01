@@ -72,6 +72,26 @@ def clean_power_values(gdf_irve):
     return df_irve_power_clean
 
 
+def clean_lat_lon(df_irve):
+    coordinates = np.stack(
+        df_irve.coordonneesXY.str.replace("[", "")
+        .str.replace("]", "")
+        .str.replace(" ", "")
+        .str.split(",")
+    ).astype(float)
+    latitudes = coordinates[:, 0]
+    longitude = coordinates[:, 1]
+
+    df_irve.consolidated_latitude = df_irve.consolidated_latitude.fillna(
+        pd.Series(latitudes, index=df_irve.index)
+    )
+    df_irve.consolidated_longitude = df_irve.consolidated_longitude.fillna(
+        pd.Series(longitude, index=df_irve.index)
+    )
+
+    return df_irve
+
+
 def add_close_bornes_by_power_cluster_simple(df_bornes_communes, gamma, dist_max_km):
     """
     For a dedicated city, add the irve nearby, depending on the gamma and dist_max_km parameters.
@@ -191,6 +211,8 @@ def compute_bornes_by_communes_smoothed(
         df_irve = clean_power_values(gdf_irve)
         insee_label = "code_commune_INSEE"
 
+    # Clean latitudes and longitudes for IRVE
+    df_irve = clean_lat_lon(df_irve)
     # Get features for IRVE
     df_irve = complete_df_irve(df_irve)
     # Aggregate the cities with arrondissement
