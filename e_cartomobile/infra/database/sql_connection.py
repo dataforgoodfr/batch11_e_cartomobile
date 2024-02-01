@@ -1,7 +1,8 @@
 import os
+
 import psycopg2
-from sqlalchemy import create_engine
 import streamlit as st
+from sqlalchemy import create_engine
 
 
 def get_db_environment():

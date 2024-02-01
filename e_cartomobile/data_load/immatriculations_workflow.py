@@ -1,18 +1,19 @@
 # %%
 # Importation
+import datetime as dt
 import os
 import sys
 
 sys.path.insert(0, os.getcwd())
 
-import datetime as dt
-
-from e_cartomobile.data_extract.immatriculations import get_immatriculations_data_online
-from e_cartomobile.data_transform.immatriculations import clean_immatriculations_data
-from e_cartomobile.data_transform.compute_score_4 import compute_score_4
-
-from e_cartomobile.infra.database.sql_connection import get_db_engine
-
+from e_cartomobile.data_extract.immatriculations import (  # noqa: E402
+    get_immatriculations_data_online,
+)
+from e_cartomobile.data_transform.compute_score_4 import compute_score_4  # noqa: E402
+from e_cartomobile.data_transform.immatriculations import (  # noqa: E402
+    clean_immatriculations_data,
+)
+from e_cartomobile.infra.database.sql_connection import get_db_engine  # noqa: E402
 
 # %%
 # Connexion
