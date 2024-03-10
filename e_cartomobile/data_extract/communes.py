@@ -1,5 +1,5 @@
-"""Get communes data"""
-
+# %%
+# Importations
 import io
 import os
 import shutil
@@ -7,17 +7,21 @@ import zipfile
 from pathlib import Path
 
 import geopandas as gpd
+import pandas as pd
 import requests
 
 from e_cartomobile.constants import DATA_PATH
 from e_cartomobile.infra.database.sql_connection import get_db_connector
 
+# %%
+# Parameters
 FILENAME = "communes-20220101"
 TEMP_EXT = ".shp"
 URL = "https://www.data.gouv.fr/fr/datasets/r/0e117c06-248f-45e5-8945-0e79d9136165"
 TEMP_PATH = "temp_unzip"
 
-
+# %%
+# Get communes data
 def get_communes_data_local() -> gpd.GeoDataFrame:
     "Saves communes file in DATA_PATH and returns the GeoDataFrame."
     if not Path(os.path.join(DATA_PATH, FILENAME + ".feather")).is_file():
@@ -44,7 +48,7 @@ def get_communes_data_local() -> gpd.GeoDataFrame:
     return communes
 
 
-def get_communes_data() -> gpd.GeoDataFrame:
+def get_communes_data_bdd() -> gpd.GeoDataFrame:
     conn = get_db_connector()
 
     req_communes = "SELECT insee, nom_commune, surf_ha, geometry, x, y FROM communes"
@@ -53,6 +57,16 @@ def get_communes_data() -> gpd.GeoDataFrame:
     communes.crs = "epsg:4326"
     return communes.rename(columns={"nom_commune": "nom"})
 
+def get_communes_data() -> gpd.GeoDataFrame:
+    communes = gpd.read_feather("e_cartomobile/content/local_data/df_communes.feather")
+    return communes
+
+def get_communes_data_no_geom() -> pd.DataFrame:
+    communes = pd.read_csv(
+        "e_cartomobile/content/local_data/df_communes_no_geom.csv",
+        index_col = 0
+        )
+    return communes
 
 def get_departement_data() -> gpd.GeoDataFrame:
     geojson_dep_file_path = (
