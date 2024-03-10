@@ -20,6 +20,7 @@ TEMP_EXT = ".shp"
 URL = "https://www.data.gouv.fr/fr/datasets/r/0e117c06-248f-45e5-8945-0e79d9136165"
 TEMP_PATH = "temp_unzip"
 
+
 # %%
 # Get communes data
 def get_communes_data_local() -> gpd.GeoDataFrame:
@@ -57,16 +58,18 @@ def get_communes_data_bdd() -> gpd.GeoDataFrame:
     communes.crs = "epsg:4326"
     return communes.rename(columns={"nom_commune": "nom"})
 
+
 def get_communes_data() -> gpd.GeoDataFrame:
     communes = gpd.read_feather("e_cartomobile/content/local_data/df_communes.feather")
     return communes
 
+
 def get_communes_data_no_geom() -> pd.DataFrame:
     communes = pd.read_csv(
-        "e_cartomobile/content/local_data/df_communes_no_geom.csv",
-        index_col = 0
-        )
+        "e_cartomobile/content/local_data/df_communes_no_geom.csv", index_col=0
+    )
     return communes
+
 
 def get_departement_data() -> gpd.GeoDataFrame:
     geojson_dep_file_path = (
