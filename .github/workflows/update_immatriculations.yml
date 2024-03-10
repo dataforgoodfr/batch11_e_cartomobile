@@ -38,4 +38,11 @@ jobs:
       - name: RunImmatriculationsWorkflow
         run: |
           poetry run python e_cartomobile/data_load/immatriculations_workflow.py
-
+      - name: Push data to the repo
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git status
+          git add .
+          git commit -m "ci (update immatriculations)"
+          git push origin main --force
