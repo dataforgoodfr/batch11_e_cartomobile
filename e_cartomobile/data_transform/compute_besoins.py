@@ -17,7 +17,7 @@ from e_cartomobile.data_extract.read_scores import (
 # Calcul des besoins
 def compute_besoin_local() -> pd.Series:
     bornes_smoothed = get_bornes_smoothed_local()
-    score_4 = get_score_4(5, 20)
+    score_4 = get_score_4()
 
     besoin_local = bornes_smoothed / score_4
     besoin_local = besoin_local.fillna(0)

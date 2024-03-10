@@ -5,7 +5,7 @@ import pandas as pd
 
 from e_cartomobile.constants import ARRONDISSEMENT_DICT, DATA_PATH
 from e_cartomobile.data_extract.bornes import get_bornes_data, get_bornes_data_combined
-from e_cartomobile.data_extract.communes import get_communes_data
+from e_cartomobile.data_extract.communes import get_communes_data_no_geom
 from e_cartomobile.data_transform.compute_score_4 import (  # same distance collection
     score_4_target_commune,
 )
@@ -222,7 +222,7 @@ def compute_bornes_by_communes_smoothed(
     # Compute bornes for each city
     df_bornes_communes = compute_pdc_by_communes(df_irve, insee_label=insee_label)
     # Complete city with position data
-    gdf_comm = get_communes_data()
+    gdf_comm = get_communes_data_no_geom()
     gdf_comm[["x_crs_2154", "y_crs_2154"]] = np.array(
         get_x_y_from_lat_lon(gdf_comm.y, gdf_comm.x)
     ).T
