@@ -34,7 +34,9 @@ def get_immatriculations_data_local() -> pd.DataFrame:
 
 
 def get_immatriculations_data_online() -> pd.DataFrame:
-    immatriculations = pd.read_csv(URL, delimiter=";", dtype={"codgeo": "str"})
+    immatriculations = pd.read_csv(
+        URL, delimiter=";", dtype={"codgeo": "str", "CODGEO": "str"}
+    )
     return immatriculations
 
 

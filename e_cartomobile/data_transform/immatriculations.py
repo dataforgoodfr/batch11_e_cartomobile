@@ -79,6 +79,7 @@ def clean_immatriculations_data(raw_immatriculations):
     "Clean raw immatriculations dataset and add communes info"
 
     immatriculations = raw_immatriculations.copy()
+    immatriculations.columns = [x.lower() for x in immatriculations.columns]
 
     immatriculations["date_arrete"] = (
         immatriculations["date_arrete"].apply(pd.to_datetime).dt.date
