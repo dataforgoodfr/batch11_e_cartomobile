@@ -112,7 +112,7 @@ def clean_insee(insee_label):
 
 
 def get_bornes_data_combined():
-    filelink = "https://raw.githubusercontent.com/BastienGauthier/clean_french_irve/main/data/df_irve_etalab_cleaned_combined.csv"
-    df_bornes = pd.read_csv(filelink, index_col=0)
+    filelink = "https://github.com/BastienGauthier/clean_french_irve/raw/refs/heads/main/data/df_irve_etalab_cleaned_combined.parquet"
+    df_bornes = pd.read_parquet(filelink)
     df_bornes["code_insee_commune"] = df_bornes["code_insee_commune"].apply(clean_insee)
     return df_bornes
