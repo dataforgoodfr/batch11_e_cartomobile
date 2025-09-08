@@ -20,7 +20,7 @@ jobs:
       HOST: ${{ secrets.HOST }}
       PORT: ${{ secrets.PORT }}
     steps:
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       - uses: actions/checkout@v4
