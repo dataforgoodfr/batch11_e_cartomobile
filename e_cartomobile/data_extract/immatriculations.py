@@ -13,7 +13,7 @@ from e_cartomobile.infra.database.sql_connection import get_db_connector
 
 FILENAME = "voitures-rechargeables-par-commune"
 IMMATRICULATIONS_FILENAME = os.path.join(DATA_PATH, FILENAME + ".csv")
-URL = "https://www.data.gouv.fr/fr/datasets/r/4e4fccdb-6acb-4e31-8b2d-cb170f639f1a"
+URL = "https://object.files.data.gouv.fr/hydra-parquet/hydra-parquet/90e0d717-deda-4bdc-9987-f82faac5bc93.parquet" # parquet
 
 
 def get_immatriculations_data_local() -> pd.DataFrame:
@@ -34,9 +34,7 @@ def get_immatriculations_data_local() -> pd.DataFrame:
 
 
 def get_immatriculations_data_online() -> pd.DataFrame:
-    immatriculations = pd.read_csv(
-        URL, delimiter=";", dtype={"codgeo": "str", "CODGEO": "str"}
-    )
+    immatriculations = pd.read_parquet(URL)
     return immatriculations
 
 
