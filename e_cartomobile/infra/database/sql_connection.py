@@ -1,6 +1,6 @@
 import os
 
-import psycopg2
+import psycopg
 import streamlit as st
 from sqlalchemy import create_engine
 
@@ -21,7 +21,7 @@ def get_db_environment():
 @st.cache_resource(ttl=3600)
 def get_db_connector():
     sec = get_db_environment()
-    connector = psycopg2.connect(**sec)
+    connector = psycopg.connect(**sec)
     return connector
 
 
